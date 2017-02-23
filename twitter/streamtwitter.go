@@ -34,7 +34,7 @@ func main() {
 	if os.Getenv("DEV") == "TRUE" {
 		db, err = sql.Open("postgres", "postgres://postgres:postgres@127.0.0.1/twitter?sslmode=disable")
 	} else {
-		db, err = sql.Open("postgres", "postgres://rick:proost@127.0.0.1:8080/twitter?sslmode=disable")
+		db, err = sql.Open("postgres", "postgres://rick:proost@127.0.0.1:8082/twitter?sslmode=disable")
 	}
 
 	consumerKey := opts.TCKey
