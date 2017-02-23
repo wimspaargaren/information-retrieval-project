@@ -66,7 +66,7 @@ func main() {
 			}
 			var id int
 			dbErr := tx.QueryRow("INSERT INTO data (tweet) VALUES ($1) RETURNING id",
-				string(output)).Scan(&id)
+				output).Scan(&id)
 			if dbErr != nil {
 				fmt.Println(dbErr)
 			}
