@@ -48,6 +48,11 @@ func main() {
 
 		if tweet.Coordinates != nil {
 			fmt.Println("=======================================================")
+			// output, err := json.Marshal(tweet)
+			// if err != nil {
+			// 	fmt.Printf("error: %v\n", err)
+			// }
+			// fmt.Println(string(output))
 			fmt.Println(tweet.Text)
 			fmt.Println(tweet.Coordinates.Coordinates[0])
 			fmt.Println(tweet.Coordinates.Coordinates[1])
