@@ -1,6 +1,8 @@
 package main
 
 import (
+	sql "database/sql"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"log"
@@ -10,7 +12,10 @@ import (
 
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
+	_ "github.com/lib/pq"
 )
+
+var db *sql.DB
 
 func main() {
 	opts := struct {
@@ -24,6 +29,13 @@ func main() {
 	flag.StringVar(&opts.TAToken, "tatoken", opts.TAToken, "input for Twitter access token")
 	flag.StringVar(&opts.TASecret, "tasecret", opts.TASecret, "input for Twitter access secret")
 	flag.Parse()
+
+	var err error
+	if os.Getenv("DEV") == "TRUE" {
+		db, err = sql.Open("postgres", "postgres://postgres:postgres@127.0.0.1/twitter?sslmode=disable")
+	} else {
+		db, err = sql.Open("postgres", "postgres://rick:proost@127.0.0.1/twitter?sslmode=disable")
+	}
 
 	consumerKey := opts.TCKey
 	consumerSecret := opts.TCSecret
@@ -47,15 +59,24 @@ func main() {
 	demux.Tweet = func(tweet *twitter.Tweet) {
 
 		if tweet.Coordinates != nil {
+			tx, err := db.Begin()
+			output, err := json.Marshal(tweet)
+			if err != nil {
+				fmt.Printf("error: %v\n", err)
+			}
+			var id int
+			dbErr := tx.QueryRow("INSERT INTO data (tweet) VALUES ($1) RETURNING id",
+				string(output)).Scan(&id)
+			if dbErr != nil {
+				fmt.Println(dbErr)
+			}
+			tx.Commit()
+
 			fmt.Println("=======================================================")
-			// output, err := json.Marshal(tweet)
-			// if err != nil {
-			// 	fmt.Printf("error: %v\n", err)
-			// }
-			// fmt.Println(string(output))
 			fmt.Println(tweet.Text)
 			fmt.Println(tweet.Coordinates.Coordinates[0])
 			fmt.Println(tweet.Coordinates.Coordinates[1])
+			fmt.Println("In database as ", id)
 		}
 
 	}
