@@ -11,7 +11,7 @@ to motivate, in a written form:
 requirement prioritisation); - Rick
 
 – a coarse-grained execution plan, with responsibilities clearly assigned to each group
-member ;
+member ; - Wim
 
 – a coarse-grained business plan;
 
