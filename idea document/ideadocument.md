@@ -19,7 +19,7 @@ member ; - Wim
 (crowdworkers and end-users)
 
 – your planned evaluation and success metrics. - Ruben  
-- Further expand on project idea with more detailed explanation of uses for different stakeholders(See company story in pitch folder)
+– Further expand on project idea with more detailed explanation of uses for different stakeholders(See company story in pitch folder)
 
 The project idea documents must be delivered by Week 4.
 
