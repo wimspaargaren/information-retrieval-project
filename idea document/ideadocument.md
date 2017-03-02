@@ -30,32 +30,41 @@ NOTE 2: while the complete specification should be ready by Week 4, you are stro
 invited to start development as soon as possible
 The Project idea document will be assessed according to the Rubric reported in Table 2
 
+# Amsterdam in motion
+
+## Introduction
+
+A lot of data is gathered on the web and with that data you can do amazing things. Many approaches to analyze data can be taken for all kind of things. Conventionally, data was gathered for specific reasons and only used for those specific reasons. Nowadays a lot of social data is gathered and with out-of-the-box thinking, this data can be used in an enormous amount of ways. With API-crawlers [ref-for-definition-needed], web-scrapers[ref-for-definition-needed], you can retrieve this data and analyze it in any way possible to for example visualize trends, activities and life-style differences in any neighbourhood.
+
+## Project idea
+The goal of 'Amsterdam in motion' is to visualize different neighbourhoods in amsterdam, based on the type of activity going on there, geographical as well as in time. This then can be used to know where certain needs are, like events and shops. This can also lead to more social interaction between people with the same activity, because they will know where that activity is most popular.
+
 #The relevance to the course
 
 #The innovative and challenging of the project
 
-#The requirements/specifications of the application
+##The requirements/specifications of the application
 
-## MOSCOW
+### MOSCOW
 
-### Must haves
+#### Must haves
 
 - Data crawler on Twitter
 - Data crawler on Strava
 - BM25 analytics with known taxonomies
 - Visual representation of categorized data on Mapbox
 
-### Should haves
+#### Should haves
 
 - Dyamic selection on day of week to visualize data
 - Dynamic selection on time of day to visualize data
 - Neighbourhood selection to represent several attributes regarding the neighbourhood
 
-### Could haves
+#### Could haves
 
 - Real-time input of new taxonomies
 - Use of face++ to retrieve additional attributes
 - Use of Genderize to retrieve additional attributes
 - Display multiple maps next to eachother for easy comparison of different filters
 
-### Won't haves
+#### Won't haves
