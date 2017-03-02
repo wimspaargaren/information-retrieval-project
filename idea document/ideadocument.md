@@ -3,7 +3,7 @@ A five-pages Project idea document. In this small document, you will put in a wr
 form your pitch presentation. In details, you are required to formalise the project topic and
 to motivate, in a written form:
 
-– the relevance to the course; - Wim
+<s>– the relevance to the course; - Wim</s>
 
 – the innovative and challenging nature of the project; - Ruben
 
