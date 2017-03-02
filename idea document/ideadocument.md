@@ -18,7 +18,8 @@ member ; - Wim
 – Flow diagram of major system components, and mockups of any user-facing interfaces
 (crowdworkers and end-users)
 
-– your planned evaluation and success metrics. - Ruben
+– your planned evaluation and success metrics. - Ruben  
+- Further expand on project idea with more detailed explanation of uses for different stakeholders(See company story in pitch folder)
 
 The project idea documents must be delivered by Week 4.
 
