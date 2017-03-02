@@ -5,7 +5,7 @@ to motivate, in a written form:
 
 <s>– the relevance to the course; - Wim</s>
 
-– the innovative and challenging nature of the project; - Ruben
+<s>– the innovative and challenging nature of the project; - Ruben</s>
 
 – the requirements/specifications of the application to develop (e.g. using MOSCOW
 requirement prioritisation); - Rick
@@ -18,7 +18,7 @@ member ; - Wim
 – Flow diagram of major system components, and mockups of any user-facing interfaces
 (crowdworkers and end-users)
 
-– your planned evaluation and success metrics.
+– your planned evaluation and success metrics. - Ruben
 
 The project idea documents must be delivered by Week 4.
 
