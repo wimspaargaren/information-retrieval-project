@@ -116,9 +116,10 @@ be evaluated by analysing how well the different stakeholders can use the end
 product for their respective goals.
 
 
-#Table test
-|  Week 1 |  Week 2 | Week 3  |   |   |
-|---|---|---|---|---|
-|   |   |   |  asf |  asdf |
-|   |   |   |   |   |
-|   |   |   |   |   |
+
+## Execution plan
+||  Week 4 	|  Week 5 	| Week 6  	| Week 7  	| Week 8  	| Week 9	|
+||---		|---		|---		|---		|---		|---		|
+|What| Idea document|Data collection & Management|Text processing & Classification|User interface|Finishing product|Presentation|
+|| ---		|---   		|---   		|---   		|---   		|---		|
+|By whom| Everyone  |Twitter: Rick & Wim Strava: Daan & Ruben|Wim & Ruben & Thom|Everyone|Everyone   |
