@@ -35,3 +35,27 @@ The Project idea document will be assessed according to the Rubric reported in T
 #The innovative and challenging of the project
 
 #The requirements/specifications of the application
+
+## MOSCOW
+
+### Must haves
+
+- Data crawler on Twitter
+- Data crawler on Strava
+- BM25 analytics with known taxonomies
+- Visual representation of categorized data on Mapbox
+
+### Should haves
+
+- Dyamic selection on day of week to visualize data
+- Dynamic selection on time of day to visualize data
+- Neighbourhood selection to represent several attributes regarding the neighbourhood
+
+### Could haves
+
+- Real-time input of new taxonomies
+- Use of face++ to retrieve additional attributes
+- Use of Genderize to retrieve additional attributes
+- Display multiple maps next to eachother for easy comparison of different filters
+
+### Won't haves
