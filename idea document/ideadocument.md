@@ -41,6 +41,8 @@ The goal of 'Amsterdam in motion' is to visualize different neighbourhoods in am
 
 #The relevance to the course
 
+The relevance of our project to the course is as follows. As described in the introduction slide of the course, search is a fundamental human activity. The system which will be implemented helps humans search for places, in Amsterdam, where certain sport activities will be carried out. The introduction slide also states that since the beginning of the written work, people tried to organize information, but there is a problem, namely, information overload. The product "Amsterdam in motion" organizes the overload of social media data and categorizes this into different sport categories. So the project is very relevant to the course, since the final product will organize an overload of social media data which helps humans search for places and times where certain sport activities will be carried out.
+
 #The innovative and challenging of the project
 
 ##The requirements/specifications of the application
