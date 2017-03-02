@@ -39,9 +39,18 @@ A lot of data is gathered on the web and with that data you can do amazing thing
 ## Project idea
 The goal of 'Amsterdam in motion' is to visualize different neighbourhoods in amsterdam, based on the type of activity going on there, geographical as well as in time. This then can be used to know where certain needs are, like events and shops. This can also lead to more social interaction between people with the same activity, because they will know where that activity is most popular.
 
-#The relevance to the course
+##The relevance to the course
 
-The relevance of our project to the course is as follows. As described in the introduction slide of the course, search is a fundamental human activity. The system which will be implemented helps humans search for places, in Amsterdam, where certain sport activities will be carried out. The introduction slide also states that since the beginning of the written work, people tried to organize information, but there is a problem, namely, information overload. The product "Amsterdam in motion" organizes the overload of social media data and categorizes this into different sport categories. So the project is very relevant to the course, since the final product will organize an overload of social media data which helps humans search for places and times where certain sport activities will be carried out.
+The relevance of our project to the course is as follows. Information retrieval deals with the representation, storage, organization of, and access to information items. The final product which will be implemented during this course will cover all of these topics.
+
+First of all the representation of data. To give the users of "Amsterdam in motion" a user-friendly presentation of data, a map will be used to display areas where people carry out certain sport activities.
+
+Secondly the storage and organization of the data is covered. For storage of data the product uses two crawlers which gather information from Twitter and Strava and store this in a database.  This data is unstructured, but certain documents will satisfy the information need. To find the relevant documents from the information which is gathered, the data will be organized in a second database per sport category. This will be done by using the BM25 algorithm to find relevant tweets, for example, for a certain sports category.
+
+And last the access to information is covered, since social media data is accessed on the background, users of the product "Amsterdam in motion" can access organized data displayed on a map.
+
+In short the product "Amsterdam in motion" organizes the overload of social media data and categorizes this into different sport categories. To achieve this goal all topics of the course information retrieval are covered, so it is pretty clear that the project is very relevant.
+
 
 #The innovative and challenging of the project
 
