@@ -121,5 +121,4 @@ product for their respective goals.
 |  |  Week 4 	|  Week 5 	| Week 6  	| Week 7  	| Week 8  	| Week 9	|
 | --- | ---		| ---		| ---		| ---		| ---		| ---		|
 | What | Idea document|Data collection & Management|Text processing & Classification|User interface|Finishing product|Presentation|
-
 | By whom | Everyone  |Twitter: Rick & Wim Strava: Daan & Ruben|Wim & Ruben & Thom|Daan & Thom |Everyone|Everyone   |
