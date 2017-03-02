@@ -89,13 +89,27 @@ analyse profile images with external libraries such as Face++ and genderize.
 
 - Dyamic selection on day of week to visualize data
 - Dynamic selection on time of day to visualize data
-- Neighbourhood selection to represent several attributes regarding the neighbourhood
+- Neighborhood selection to represent several attributes regarding the neighborhood
 
 #### Could haves
 
 - Real-time input of new taxonomies
 - Use of face++ to retrieve additional attributes
 - Use of Genderize to retrieve additional attributes
-- Display multiple maps next to eachother for easy comparison of different filters
+- Display multiple maps next to each other for easy comparison of different filters
 
 #### Won't haves
+
+## Evalutation and Succes metrics
+The way we will evaluate the project is going to be based on the MOSCOW
+definitions. This is a useful and structured listing of the project in which
+the importance of each feature is represented. The must haves in this list
+are the bare minimum that should be working at the end of the project. The
+should haves and the could haves after that are the metrics that are used to
+further evaluate the success of the project. How well does a feature work and
+what is the experienced usefulness of a feature.
+
+Besides the metrics defined by MOSCOW the project will be evaluated by how well
+we have reached our goals set in the beginning of the project. These goals can
+be evaluated by analysing how well the different stakeholders can use the end
+product for their respective goals.
