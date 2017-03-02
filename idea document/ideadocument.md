@@ -16,10 +16,10 @@ member ; - Wim</s>
 <s>– a coarse-grained business plan;</s>
 
 – Flow diagram of major system components, and mockups of any user-facing interfaces
-(crowdworkers and end-users)
+(crowdworkers and end-users) - Thom
 
 – your planned evaluation and success metrics. - Ruben  
-– Further expand on project idea with more detailed explanation of uses for different stakeholders(See company story in pitch folder)
+– Further expand on project idea with more detailed explanation of uses for different stakeholders(See company story in pitch folder) - Daan
 
 The project idea documents must be delivered by Week 4.
 
