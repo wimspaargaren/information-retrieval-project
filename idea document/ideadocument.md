@@ -54,7 +54,7 @@ In short the product "Amsterdam in motion" organizes the overload of social medi
 
 #The innovative and challenging of the project
 
-##The requirements/specifications of the application
+## The requirements/specifications of the application
 
 ### MOSCOW
 
