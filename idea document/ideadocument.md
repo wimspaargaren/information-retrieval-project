@@ -13,7 +13,7 @@ requirement prioritisation); - Rick
 – a coarse-grained execution plan, with responsibilities clearly assigned to each group
 member ; - Wim
 
-– a coarse-grained business plan;
+<s>– a coarse-grained business plan;</s>
 
 – Flow diagram of major system components, and mockups of any user-facing interfaces
 (crowdworkers and end-users)
@@ -99,3 +99,12 @@ analyse profile images with external libraries such as Face++ and genderize.
 - Display multiple maps next to eachother for easy comparison of different filters
 
 #### Won't haves
+
+
+
+#Table test
+|  Week 1 |  Week 2 | Week 3  |   |   |
+|---|---|---|---|---|
+|   |   |   |  asf |  asdf |
+|   |   |   |   |   |
+|   |   |   |   |   |
