@@ -10,8 +10,8 @@ to motivate, in a written form:
 – the requirements/specifications of the application to develop (e.g. using MOSCOW
 requirement prioritisation); - Rick
 
-– a coarse-grained execution plan, with responsibilities clearly assigned to each group
-member ; - Wim
+<s>– a coarse-grained execution plan, with responsibilities clearly assigned to each group
+member ; - Wim</s>
 
 <s>– a coarse-grained business plan;</s>
 
@@ -118,6 +118,18 @@ product for their respective goals.
 
 
 ## Execution plan
+In the table below our execution plan for the upcoming weeks is described. 
+
+In week four the idea document will be elaborated. The different tasks for the report will be divided among the group members.
+
+In week five the data collection and management of the system will be implemented. The implementation of the collection and management of Twitter, will be done by Wim and Rick and the implementation of the collection and management of Strave, will be done by Daan and Ruben.
+
+In week six the text processing and classification will be implemented. This will be done by Wim, Ruben and Thom. This means that the data collection will be ready to be displayed on the map.
+
+In week seven the user interface will be implemented by Daan and Thom. This means that the first sport activity groups will be displayed on the map.
+
+In week eight the product will be finished. Everyone has the responsibility that the different parts of the system work together.
+
 |  |  Week 4 	|  Week 5 	| Week 6  	| Week 7  	| Week 8  	| Week 9	|
 | --- | ---		| ---		| ---		| ---		| ---		| ---		|
 | What | Idea document|Data collection & Management|Text processing & Classification|User interface|Finishing product|Presentation|
