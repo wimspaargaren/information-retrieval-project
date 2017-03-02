@@ -52,7 +52,27 @@ And last the access to information is covered, since social media data is access
 In short the product "Amsterdam in motion" organizes the overload of social media data and categorizes this into different sport categories. To achieve this goal all topics of the course information retrieval are covered, so it is pretty clear that the project is very relevant.
 
 
-#The innovative and challenging of the project
+## The innovative and challenging nature of the project
+Tracking individuals on various social media platforms is no challenge anymore.
+With the multitude of platforms available every kind of activity and personal
+updates can be tracked.
+
+What still lacks online is an option to easily bundle
+all this individual data into accurate and up to date information on when and
+where these activities happen. Because of that our project aims to innovate in
+the way the data will be modeled onto the map of Amsterdam. The data will be
+analysed and categorised based on several factors.
+
+First of all the data will of course be mapped into different neighborhoods
+based on the type of sport activity. Next our project splits the data based on
+the time the activity takes place. What we are curious to see is on what types
+of activity happen at which time of the day and on which day of the week.
+Furthermore our plan for this project is to analyse the data based on age and
+gender and map wether or not this influences the outcome of information on the
+map. This aspect of the project is quite challenging as no age information is
+directly bundled in the crawled data and in twitter also no gender information
+is supplied. In order to still gather data with age and gender we want to
+analyse profile images with external libraries such as Face++ and genderize.
 
 ##The requirements/specifications of the application
 
