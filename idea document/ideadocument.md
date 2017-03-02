@@ -3,22 +3,22 @@ A five-pages Project idea document. In this small document, you will put in a wr
 form your pitch presentation. In details, you are required to formalise the project topic and
 to motivate, in a written form:
 
-– the relevance to the course; - Wim
+<s>– the relevance to the course; - Wim</s>
 
-– the innovative and challenging nature of the project; - Ruben
+<s>– the innovative and challenging nature of the project; - Ruben</s>
 
 – the requirements/specifications of the application to develop (e.g. using MOSCOW
 requirement prioritisation); - Rick
 
 – a coarse-grained execution plan, with responsibilities clearly assigned to each group
-member ;
+member ; - Wim
 
 – a coarse-grained business plan;
 
 – Flow diagram of major system components, and mockups of any user-facing interfaces
 (crowdworkers and end-users)
 
-– your planned evaluation and success metrics.
+– your planned evaluation and success metrics. - Ruben
 
 The project idea documents must be delivered by Week 4.
 
@@ -52,7 +52,27 @@ And last the access to information is covered, since social media data is access
 In short the product "Amsterdam in motion" organizes the overload of social media data and categorizes this into different sport categories. To achieve this goal all topics of the course information retrieval are covered, so it is pretty clear that the project is very relevant.
 
 
-#The innovative and challenging of the project
+## The innovative and challenging nature of the project
+Tracking individuals on various social media platforms is no challenge anymore.
+With the multitude of platforms available every kind of activity and personal
+updates can be tracked.
+
+What still lacks online is an option to easily bundle
+all this individual data into accurate and up to date information on when and
+where these activities happen. Because of that our project aims to innovate in
+the way the data will be modeled onto the map of Amsterdam. The data will be
+analysed and categorised based on several factors.
+
+First of all the data will of course be mapped into different neighborhoods
+based on the type of sport activity. Next our project splits the data based on
+the time the activity takes place. What we are curious to see is on what types
+of activity happen at which time of the day and on which day of the week.
+Furthermore our plan for this project is to analyse the data based on age and
+gender and map wether or not this influences the outcome of information on the
+map. This aspect of the project is quite challenging as no age information is
+directly bundled in the crawled data and in twitter also no gender information
+is supplied. In order to still gather data with age and gender we want to
+analyse profile images with external libraries such as Face++ and genderize.
 
 ## The requirements/specifications of the application
 
