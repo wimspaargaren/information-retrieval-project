@@ -1,0 +1,15 @@
+We nowadays track our every move on various social media platforms. 
+While it is easy to track individual people, there is a lack of near 
+real-time information on sports activities in a certain area. 
+The challenge we want to address with our platform is to gather and 
+analyze sport activity information and model this onto a map. Our goal 
+is to get insight in where a sport activity is more popular and most 
+importantly on which time and day of the week. This information is 
+interesting for different stakeholders and their respective purposes. 
+Individual athletes could use this platform to see when certain areas 
+are busy and when they are not and would be suitable to plan their activity. 
+For companies the platform can be very useful to see in what neighborhoods 
+to build a running or football store for example. Lastly for municipalities 
+this information can help in the decision where to build more streetlights 
+for runners or which sport parks are most visited and in need of maintenance. 
+
