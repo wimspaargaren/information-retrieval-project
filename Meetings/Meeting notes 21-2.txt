@@ -1,0 +1,30 @@
+Project #2 - Data driven city profiles
+
+- Weekly group meetings 30 mins - Fill in doodle in time!
+
+- Identifying neighbourhoods with the same character
+- Create a system that has an entire pipeline that tries to detect these neighbourhoods
+    - Design the system and identify common attributes
+    - Attributes may over space/time
+- Sources:
+    - Social media: twitter, Instagram, foursquare, flickr,  etc.
+- Attributes
+    - Topics -> text mining
+    - Language
+    - Online contacts
+    - POI Categories
+    - User profile information
+    - Others? More innovative idea’s!
+- Search Engine: Elastic Search
+- Web Mapping: Leaflet, Carto, etc.
+- Example: Livehood
+- Question: Will the system have to be real time? Decide on your own, but probably crawl data on your own and analyse this.
+- Question: Couldn’t they use the same system for different cities? Yes, could be easily applied to different cities.
+- Question: I have experience with twitter api, but for example Instagram how can we easily get geo data with longitude and latitude. Has changed many times already but, if they check in with a venue, you can get geodata from that. If it is too difficult, use another source.
+- Question: Is it possible to use datasets we find online? Yes, if they are from Amsterdam.
+
+- Timeline:
+    - Week 3.3 - Pitch presentation - 3 mins - Idea’s, components, Responsibilities - Source, attributes and why. - Not assessed
+    - Week 3.4 - Project idea document - 5 pages - See syllabus section 5.2 - Assessed: 10%
+    - Week 3.5 - Last chance for composition changes
+    - Week 3.9 - Final presentation - 20 mins - Assessed: 50 - 10 mins Q&A - Individual group report 2-3 pages, Assessed 20%

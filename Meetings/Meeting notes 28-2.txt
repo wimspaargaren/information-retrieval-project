@@ -1,0 +1,25 @@
+- Don’t spend time presenting the assignment
+    - Instead add catchy title for your own project
+    - Add a challenge, related to the theme you want to address
+    - Give your own take
+    - Our goal is: …..
+- Idea is quite generic
+    - Perhaps use profile image to approximate age
+    - Face++
+    - Genderize
+    - Perhaps gender from the name
+    - Combine current idea with earlier idea mentioned in slack
+    - How is our idea different from other work that is out there
+    - Narrow it down, focus only on sports not activities in general.
+    - Sports activities over time, weekends/weekdays
+    - Create multiple maps of Amsterdam and compare how they differ
+    - Define/search taxonomy of terms related to running/football/hockey
+    - Define different stakeholders for which this information could be useful
+    - Imagine that the audience is your stakeholder
+- Structure more clearly
+    - Why do we use BM25 and not something else -> advantages over other algorithms
+- Pipeline
+    - Integrate with approach slide
+    - Make a little bit more clear
+- Timeline
+    - Identify who’s going to do what
