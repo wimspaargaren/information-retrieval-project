@@ -15,8 +15,8 @@ member ; - Wim</s>
 
 <s>– a coarse-grained business plan;</s>
 
-– Flow diagram of major system components, and mockups of any user-facing interfaces
-(crowdworkers and end-users) - Thom
+<s>– Flow diagram of major system components, and mockups of any user-facing interfaces
+(crowdworkers and end-users) - Thom</s>
 
 – your planned evaluation and success metrics. - Ruben  
 – Further expand on project idea with more detailed explanation of uses for different stakeholders(See company story in pitch folder) - Daan
@@ -114,6 +114,23 @@ Besides the metrics defined by MOSCOW the project will be evaluated by how well
 we have reached our goals set in the beginning of the project. These goals can
 be evaluated by analysing how well the different stakeholders can use the end
 product for their respective goals.
+
+## Overall architecture and UI mockups
+ /Flow diagram of major system components, and mockups of any user-facing interfaces (crowdworkers and end-users) - Thom/
+
+![Amsterdam in motion - pipeline](pipeline.png "The information pipeline")
+
+In order to be able to provide a nice overview of distinct neighbourhoods in Amsterdam several steps need to be taken. A data source providing information about activities (bounded in space and time) is needed. Twitter and Strava are being used in this project, but similar sources can be used as well. A crawler gathers every tweet from Amsterdam and stores this in a PostgreSQL database. 
+
+These tweets can be used for both the processing and identification of neighbourhoods and direct display on the user interface as illustration.
+
+The tweets are processed to determine which topics are discussed. Relevant (i.e. mathing with a sport related word list) tweets are used to classify neighbourhoods. This is done with the CNN- and/or kNN-algorithms. The clusters are also used in the user interface.
+
+This user interface is being used to display the neighbourhoods, some characteristics of the neighbourhoods and some tweets for illustration. This interface is displayed using Mapbox. The different stakeholders might get different features (which also enables for a price differentiation), but the basics are the same. The most extensive version of the interface is shown here. Variants for different stakeholders will not be distinguished currently.
+
+![User interface](mockup.png "The end-user interface")
+
+This mockup shows how end-users will interact with the end-result. The interface provides a big graphical interface containing a map with tweets and areas (neighbourhoods) projected on it. A settings panel allows for a little customization in what is shown. Export functionality is provided for stakeholders who want to use the data for their own application (e.g. to calculate where a shop can be opened).
 
 
 
