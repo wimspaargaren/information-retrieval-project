@@ -2,10 +2,11 @@
 
 ## Introduction
 
-A lot of data is gathered on the web and with that data you can do amazing things. Many approaches to analyze data can be taken for all kind of things. Conventionally, data was gathered for specific reasons and only used for those specific reasons. Nowadays a lot of social data is gathered and with out-of-the-box thinking, this data can be used in an enormous amount of ways. With API-crawlers [ref-for-definition-needed], web-scrapers[ref-for-definition-needed], you can retrieve this data and analyze it in any way possible to for example visualize trends, activities and lifestyle differences in any neighbourhood.
+A lot of data is gathered on the web and with that data you can do amazing things. Many approaches to analyze data can be taken for all kind of cool applications. Conventionally, data was gathered for specific reasons and only used for those specific reasons. Nowadays a lot of social data is gathered and with out-of-the-box thinking, this data can be used in an enormous amount of ways. With API-crawlers [ref-for-definition-needed], web-scrapers[ref-for-definition-needed], you can retrieve this data and analyze it in any way possible to for example visualize trends, activities and lifestyle differences in any neighbourhood.
 
 ## Project idea
-The goal of 'Amsterdam in motion' is to visualize different neighbourhoods in amsterdam, based on the type of activity going on there, geographical as well as in time. This then can be used to know where certain needs are, like events and shops. This can also lead to more social interaction between people with the same activity, because they will know where that activity is most popular.
+The goal of 'Amsterdam in motion' is to visualize different neighbourhoods in amsterdam, based on the type of activity going on there, geographical as well as in time. This then can be used to know where certain needs are, like events and shops. This can also lead to more social interaction between people with the same activity, because they will know where that activity is most popular. This makes the application of big interest for entrepeneurs, governments, sport organizations, individual sport enthusiasts and many more.
+
 
 ## The relevance to the course
 
@@ -66,6 +67,7 @@ analyse profile images with external libraries such as Face++ and genderize.
 - Display multiple maps next to each other for easy comparison of different filters
 
 #### Won't haves
+- Intensity (heat) map
 
 ## Execution plan
 In the table below our execution plan for the upcoming weeks is described. 
