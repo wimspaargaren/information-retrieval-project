@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A lot of data is gathered on the web and with that data you can do amazing things. Many approaches to analyze data can be taken for all kind of things. Conventionally, data was gathered for specific reasons and only used for those specific reasons. Nowadays a lot of social data is gathered and with out-of-the-box thinking, this data can be used in an enormous amount of ways. With API-crawlers [ref-for-definition-needed], web-scrapers[ref-for-definition-needed], you can retrieve this data and analyze it in any way possible to for example visualize trends, activities and life-style differences in any neighbourhood.
+A lot of data is gathered on the web and with that data you can do amazing things. Many approaches to analyze data can be taken for all kind of things. Conventionally, data was gathered for specific reasons and only used for those specific reasons. Nowadays a lot of social data is gathered and with out-of-the-box thinking, this data can be used in an enormous amount of ways. With API-crawlers [ref-for-definition-needed], web-scrapers[ref-for-definition-needed], you can retrieve this data and analyze it in any way possible to for example visualize trends, activities and lifestyle differences in any neighbourhood.
 
 ## Project idea
 The goal of 'Amsterdam in motion' is to visualize different neighbourhoods in amsterdam, based on the type of activity going on there, geographical as well as in time. This then can be used to know where certain needs are, like events and shops. This can also lead to more social interaction between people with the same activity, because they will know where that activity is most popular.
@@ -35,7 +35,7 @@ based on the type of sport activity. Next our project splits the data based on
 the time the activity takes place. What we are curious to see is on what types
 of activity happen at which time of the day and on which day of the week.
 Furthermore our plan for this project is to analyse the data based on age and
-gender and map wether or not this influences the outcome of information on the
+gender and map whether or not this influences the outcome of information on the
 map. This aspect of the project is quite challenging as no age information is
 directly bundled in the crawled data and in twitter also no gender information
 is supplied. In order to still gather data with age and gender we want to
@@ -54,7 +54,7 @@ analyse profile images with external libraries such as Face++ and genderize.
 
 #### Should haves
 
-- Dyamic selection on day of week to visualize data
+- Dynamic selection on day of week to visualize data
 - Dynamic selection on time of day to visualize data
 - Neighborhood selection to represent several attributes regarding the neighborhood
 
@@ -95,7 +95,7 @@ In order to be able to provide a nice overview of distinct neighbourhoods in Ams
 
 These tweets can be used for both the processing and identification of neighbourhoods and direct display on the user interface as illustration.
 
-The tweets are processed to determine which topics are discussed. Relevant (i.e. mathing with a sport related word list) tweets are used to classify neighbourhoods. This is done with the CNN- and/or kNN-algorithms. The clusters are also used in the user interface.
+The tweets are processed to determine which topics are discussed. Relevant (i.e. matching with a sport related word list) tweets are used to classify neighbourhoods. This is done with the CNN- and/or kNN-algorithms. The clusters are also used in the user interface.
 
 This user interface is being used to display the neighbourhoods, some characteristics of the neighbourhoods and some tweets for illustration. This interface is displayed using Mapbox. The different stakeholders might get different features (which also enables for a price differentiation), but the basics are the same. The most extensive version of the interface is shown here. Variants for different stakeholders will not be distinguished currently.
 
@@ -105,7 +105,7 @@ This user interface is being used to display the neighbourhoods, some characteri
 
 This mockup shows how end-users will interact with the end-result. The interface provides a big graphical interface containing a map with tweets and areas (neighbourhoods) projected on it. A settings panel allows for a little customization in what is shown. Export functionality is provided for stakeholders who want to use the data for their own application (e.g. to calculate where a shop can be opened).
 
-## Evalutation and Succes metrics
+## Evaluation and Success metrics
 The way we will evaluate the project is going to be based on the MOSCOW
 definitions. This is a useful and structured listing of the project in which
 the importance of each feature is represented. The must haves in this list
@@ -122,5 +122,5 @@ product for their respective goals.
 ## Stakeholders
 
 - Local government
-- Entrepeneurs
+- Entrepreneurs
 - Individual end users
