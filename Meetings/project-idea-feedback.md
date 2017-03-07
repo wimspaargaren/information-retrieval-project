@@ -8,7 +8,7 @@ Better structure document:
 4.	Methods -> what type of methods using to analyze data and store data and preprocess data, spatial clustering, flow chart in method section <- mention steps/parts in diagram
 5.	Execution plan & specifications
 6.	Expected outcomes <- mockup UI, what do we want to do with it
-7.	Evaluation and outlook  possibly talk about stakeholder why they are for our system
+7.	Evaluation and outlook <- possibly talk about stakeholder why they are for our system
 
 Avoid:
 
