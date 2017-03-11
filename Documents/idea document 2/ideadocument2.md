@@ -16,7 +16,7 @@ To derive this information after the collection, data must be analyzed, which wi
 (Thom)
 
 # Specifications & Execution Plan
-In the previous sections the objective is presented and the way the data is collected and how this is processed in order to use for the application. In this section the different features as what can be done with this data in the application are described.
+In the previous sections the objective is presented and the way the data is collected and how this is processed so it can be used in the application. In this section the different features of the application will be described, and the different requirements to realise these features.
 
 ## MoSCoW
 The MoSCoW method is a prioritisation technique used to reach a common understanding on the importance of the delivery of each requirement. The requirements are divided amongst four categories with each their one priority, as the name suggests. For this application the following requirements are identified and categorised as seen below.
