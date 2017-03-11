@@ -42,9 +42,9 @@ The MoSCoW method is a prioritisation technique used to reach a common understan
 ### Won't haves
 - Intensity (heat) map
 
-First and foremost the application must be able to visualise the data gathered from Twitter and Strava on a map of Amsterdam. The data, as explained in the Section Methods, is analysed by the BM25 algorithm to rank the relevance to a query. The main priority is to have finish these requirements first so a working prototype can be delivered.
+First and foremost the application must be able to identify the characteristics of the data gathered from Twitter and Strava. The data, as explained in the Section Methods, is analysed by the BM25 algorithm to rank the relevance to a query. The main priority is to have finish these requirements first so a working prototype can be delivered.
 
-Next the user experience to our platform will be enhanced by giving the user more control over the presentation of the data. The user will be able to view the data based on the time of the day and week.
+Next the user experience to our platform will be enhanced by giving the user more control over the presentation of the data. The user will be able to view the data based on time of the day and day of week.
 
 The visualisation can later be extended by more extensive analysis of the gathered data to enrich the user experience. With the use of tools such as Face++ and Genderize more attributes will be added to the application, which the user can use to further narrow down his target audience.
 
