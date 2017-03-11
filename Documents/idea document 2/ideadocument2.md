@@ -88,6 +88,8 @@ In the Table table-daan-timeline the timeline of the development of the applicat
 
 _Table table-daan-timeline: The timeline of the development of the application_
 
+</center>
+
 # Expected Outcomes
 As mentioned earlier in the section objective, the goal of this application is to identify and characterise neighborhoods in Amsterdam. In figure mockup-ui a mockup of the user interface (UI) is shown, it will become visible how the UI could look.
 <p align="center">
