@@ -1,5 +1,13 @@
 # Amsterdam In Motion
 
+| Names          | Study numbers |
+|----------------|---------------|
+| Rick Proost    | 4173619 |
+| Daan Schipper  | 4155270 |
+| Ruben Starmans | 4141792 |
+| Wim Spaargaren | 4178068 |
+| Thom Hubers    | 4078543 |
+
 ## Introduction
 Social data is gathered in large quantities and available on the internet via mediums such as Facebook, Twitter and Instagram. These platforms are widely used by people to share information to the public. Individual tweets, status posts and photos may not be that useful for scientific studies, but when a multitude of these tweets, posts and photos are collected they can be analysed together. With the collected data characteristics can be extracted for different groups of individuals that for example share the same interest, like sport activities. The first challenge here is to collect data and retrieve the latent characteristics that can identify the persons interest in any kind of sport activity. The difficulty is in analysing, categorising and grouping data the right way to be able to extract and come to the right conclusions. Analysing data can give insights on how people are communicating, what they are are interested about, what motivates and drives them and just general information on what they are doing.
 Since data from the mentioned sources can contain geographic references, characteristics can possibly be identified and defined for certain areas. Another challenge here is spatial analysis and clustering of the collected data.
