@@ -26,8 +26,19 @@ The could haves describe extra functionalities that can be implemented after the
 Besides functional evaluation of the project by the MOSCOW specifications, the project can also be evaluated by testing how well the application performs in different user scenarios.
 In the following table user scenarios for which Amsterdam In Motion could be used in will be described next to the possible relevant stakeholders.
 
-| Stakeholder         | User Scenario                                                                                                                                                                                                    |
-|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Local Government    | - The government wants to know in what area of the city there is a need for more streetlights for runners. - The government wants to know what area would be most suitable and in need of a new sports complex.  |
-| Entrepeneurs        | A company wants to know where to build their new football/hockey store.                                                                                                                                          |
-| Individual Athletes | An athlete wants to know on what time of a day of the week the park is least busy. This way the athlete can plan their exercise accordingly.                                                                     |
+|| Stakeholder         | User Scenario                                                                                                                                                                                                |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Local Government    | The government wants to know in what area of the city there is a need for more streetlights for runners. The government wants to know what area would be most suitable and in need of a new sports complex.  |
+| Entrepeneurs        | A company wants to know where to build their new football/hockey store.                                                                                                                                      |
+| Individual Athletes | An athlete wants to know on what time of a day of the week the park is least busy. This way the athlete can plan their exercise accordingly.                                                                 |                                                                 |
+
+## Outlook
+There exist other similar projects that also try to divide a city into neighborhoods based on data collected from social media.
+An example of this is [LiveHoods](livehoods.org).
+Their focus however is different than ours.
+They use checkins from the social platform [Foursquare](https://foursquare.com) to identify certain areas of a city.
+This is heavily based around buildings and points of interest (POI's) in the city.
+This can however be interesting to further expand Amsterdam In Motion.
+For example Foursquare could be used to identify important sports complexes around the city.
+This could help get a better understanding of why an area is popular for a certain sports activity.
+In addition to that a mapping of important sports buildings and POI's can be created. 
