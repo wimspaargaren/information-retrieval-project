@@ -21,10 +21,10 @@ To derive this information after the collection, data must be analyzed, which wi
 This section specifies which methods will be used for the neighbourhood classification. The several steps that have to be taken to extract useful information out of the data are dispayed in a pipeline diagram, after which the steps are elaborated somewhat more.
 
 #### Overall system architecture
-The following graph shows how input data (e.g. tweets) are processed into neighbourhood classifications.
+In Figure 1 a graph shows how input data (e.g. tweets) are processed into neighbourhood classifications.
 <p align="center">
   <img alt="Workbench electron-browser component" src="../images/pipeline.png" width="60%"><br/>
-  <i>Figure figure-thom-pipeline:Graphical representation of the proposed system architecture</i>   
+  <i>Figure 1: Graphical representation of the proposed system architecture</i>   
 </p>
 
 These tweets can be used for both the processing and identification of neighbourhoods and direct display on the user interface. All relevant (sport-related) messages will be displayed.
@@ -79,7 +79,7 @@ Next the user experience to our platform will be enhanced by giving the user mor
 
 The visualisation can later be extended by more extensive analysis of the gathered data to enrich the user experience. With the use of tools such as Face++ and Genderize more attributes will be added to the application, which the user can use to further narrow down his target audience.
 
-In the Table table-daan-timeline the timeline of the development of the application is given. First the highest priority requirements will of course be developed, and later on in the project the other requirements will be worked on. Throughout the whole project data will be gathered from the different sources.
+In the Table 1 the timeline of the development of the application is given. First the highest priority requirements will of course be developed, and later on in the project the other requirements will be worked on. Throughout the whole project data will be gathered from the different sources.
 
 <center>
 
@@ -88,15 +88,15 @@ In the Table table-daan-timeline the timeline of the development of the applicat
 | Idea document| Visualising data on Mapbox | Connecting data stream to Mapbox | Finalising must-have requirements | Integration more attributes | Finalising application |
 | | BM25 analytics | Taxonomy creation | Categorising data on different attributes | Dynamic selection filters | Presentation |
 
-_Table table-daan-timeline: The timeline of the development of the application_
+_Table 1: The timeline of the development of the application_
 
 </center>
 
 ## Expected Outcomes
-As mentioned earlier in the section objective, the goal of this application is to identify and characterise neighborhoods in Amsterdam. In figure mockup-ui a mockup of the user interface (UI) is shown, it will become visible how the UI could look.
+As mentioned earlier in the section objective, the goal of this application is to identify and characterise neighborhoods in Amsterdam. In figure 2 a mockup of the user interface (UI) is shown, it will become visible how the UI could look.
 <p align="center">
   <img alt="Workbench electron-browser component" src="../images/mockup.png" width = "70%">
-  <br><i>Figure mockup-ui: Mockup of the User Interface</i>
+  <br><i>Figure 2: Mockup of the User Interface</i>
 </p>
 The user is presented with a large map of Amsterdam. On this map blue dots are shown which are tweets or strava activities that are found to be relevant by the algorithm. Relevant posts are posts that fall into a sports activity based on the taxonomy of that sport. Around those posts the neighborhood boxes are drawn in different colors to quickly make clear how the neighborhoods of Amsterdam are divided based on sport activities. Because only relevant tweets are shown this can give an indication to the user how active an area is with regards to sports.
 
@@ -115,14 +115,18 @@ How much control do they actually give the user?
 Lastly the could haves describe the tools to further narrow the target group down and can be tested on how easy they are to use and how useful they prove to be.
 
 Besides functional evaluation of the project by the MoSCoW specifications, the project can also be evaluated by testing how well the application performs in different user scenarios.
-In Table stakeholder-scenario user scenarios for which Amsterdam In Motion could be used in are described next to the possible relevant stakeholders.
+In Table 2 user scenarios for which Amsterdam In Motion could be used in are described next to the possible relevant stakeholders.
+
+<center>
 
 | Stakeholder         | User Scenario                                                                                                                                                                                                |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Local government    | The government wants to know in what area of the city there is a need for more streetlights for runners. The government wants to know what area would be most suitable and in need of a new sports complex.  |
 | Entrepeneurs        | A company is interested to know where to build their new football/hockey store.                                                                                                                                      |
 | Individual athletes | An athlete is looking to plan their exercise. The best would be to do that on a time of a day of the week the park is least busy.                                                                  |
-_Table stakeholder-scenario: The potential stakeholders with their user scenarios._
+_Table 2: The potential stakeholders with their user scenarios._
+
+</center>
 
 ### Outlook
 Other similar projects exist that also try to divide a city into neighborhoods based on data collected from social media, an example of this is [LiveHoods](livehoods.org).
