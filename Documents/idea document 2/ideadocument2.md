@@ -16,7 +16,43 @@ To derive this information after the collection, data must be analyzed, which wi
 # Methods
 (Thom)
 
-# Speficications & Execution Plan
+# Specifications & Execution Plan
+In the previous sections the objective is presented and the way the data is collected and how this is processed in order to use for the application. In this section the different features as what can be done with this data in the application are described.
+
+## MoSCoW
+Introduction MoSCoW..
+
+### Must haves
+
+- Data crawler on Twitter
+- Data crawler on Strava
+- BM25 analytics with known taxonomies
+- Visual representation of categorized data on Mapbox
+
+### Should haves
+
+- Dynamic selection on day of week to visualize data
+- Dynamic selection on time of day to visualize data
+- Neighborhood selection to represent several attributes regarding the neighborhood
+
+### Could haves
+
+- Real-time input of new taxonomies
+- Use of Face++ to retrieve additional attributes (note: related to whom?)
+- Use of Genderize to retrieve additional attributes (note: related to whom?)
+- Display multiple maps next to each other for easy comparison of different filters
+
+### Won't haves
+- Intensity (heat) map
+
+Explanation different features
+
+Timeline, very small explanation of timeline (comment of achilleas, is this really needed?)
+|  |  Week 4 	|  Week 5 	| Week 6  	| Week 7  	| Week 8  	| Week 9	|
+| --- | ---		| ---		| ---		| ---		| ---		| ---		|
+| What | Idea document|Data collection & Management|Text processing & Classification|User interface|Finishing product|Presentation|
+| By whom | Everyone  |Twitter: Rick & Wim Strava: Daan & Ruben|Wim & Ruben & Thom|Daan & Thom |Everyone|Everyone   |
+
 
 # Expected Outcomes
 As mentioned earlier in the section objective, the goal of this application is to identify and characterise neighborhoods in Amsterdam. In figure mockup-ui a mockup of the user interface (UI) is shown, it will become visible how the UI could look.
