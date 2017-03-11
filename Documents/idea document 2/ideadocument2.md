@@ -11,9 +11,6 @@
 
 # Expected Outcomes
 
-Ruben, start with explaining your mockup.
-Reason with the goals stated in Section Objective in mind, reference also eg. to ensure usability as stated in section bla bla we have incorporated such and so.
-
 # Evaluation & Outlook
 
 ## Evaluation
