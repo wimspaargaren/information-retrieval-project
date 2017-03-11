@@ -5,9 +5,38 @@
 # Data Collection
 
 # Methods
-(Thom)
+This chapter specifies which methods will be used for the neighbourhood classification. The several steps that have to be taken to extract useful information out of the data are dispayed in a pipeline diagram, after which the steps are elaborated somewhat more.
 
-# Speficications & Execution Plan
+### Overall system architecture
+The following graph shows how input data (e.g. tweets) are processed into neighbourhood classifications.
+<p align="center">
+  <img alt="Workbench electron-browser component" src="../images/pipeline.png" width="60%">
+</p>
+
+These tweets can be used for both the processing and identification of neighbourhoods and direct display on the user interface. All relevant (sport-related) tweets will be displayed.
+
+The tweets are processed to determine which topics are discussed. Relevant (i.e. matching with a sport related word list) tweets are used to classify neighbourhoods. The clusters are also used in the user interface.
+
+### Crawler
+The crawler uses the Twitter API and Strava data. After location based filtering all data is passed to the Database Manager which stores it for later usage.
+
+### Database Manager
+The storage is provided by a simple PostgreSQL database.
+
+### Text processing
+Messages are matched and indexed to a sports-related taxonomy to indicate whether the message gives information about a sports activity and which activity that could be.
+
+### Regionalisation
+After the contents of the message have been processed this information is sent to the regionalisation subsystem. This system clusters the messages over multple dimensions (spatial, time, sport). The spatial aspect of this is done by the maxp regionalisation algorithm, which is part of the [pysal library](http://pysal.readthedocs.io/en/latest/library/region/maxp.html). Clustering on the other properties is done by a more common clustering algorhitm like [k-means](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.k_means.html#sklearn.cluster.k_means).
+
+### User Interface
+The tweets and regions are sent to the user interface. The different stakeholders can all retrieve their information need from it.
+<p align="center">
+  <img alt="Workbench electron-browser component" src="../images/mockup.png" width="60%">
+</p>
+This mockup shows how end-users will interact with the end-result. The interface provides a big graphical interface containing a map with tweets and areas (neighbourhoods) projected on it. A settings panel allows for a little customization in what is shown. Export functionality is provided for stakeholders who want to use the data for their own application (e.g. to calculate where a shop can be opened).
+
+# Specifications & Execution Plan
 
 # Expected Outcomes
 
