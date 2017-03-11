@@ -1,3 +1,4 @@
 *.exe
 debug
 .vscode
+.DS_Store
