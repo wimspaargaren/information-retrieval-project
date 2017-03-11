@@ -14,15 +14,20 @@
 # Evaluation & Outlook
 
 ## Evaluation
-Evaluation by MOSCOW definitions specified in Section Specifications & Execution Plan.
-Formulate the following better to comply with 'Use academic language'.
+In the section Specifications & Execution Plan a list of MOSCOW Specifications was presented.
+These metrics are a useful and structured manner to evaluate wether or not the application is working as intended.
+The MOSCOW specifications also describe the importance of each feature.
+Each feature can then be checked if they are implemented and how well they are working.
+The must haves are the most important features and are the bare minimum for the application to present the findings on the neighborhoods.
+The should haves are expanding features on the basic functionality.
+They can be inspected on how well they filter and modify the presented data to the user.
+The could haves describe extra functionalities that can be implemented after the rest of the application is implemented properly.
 
-> ## Evaluation and Success metrics previous document 
-> The way we will evaluate the project is going to be based on the MOSCOW definitions. This is a useful and structured listing of the project in which the importance of each feature is represented. The must haves in this list are the bare minimum that should be working at the end of the project. The should haves and the could haves after that are the metrics that are used to further evaluate the success of the project. How well does a feature work and what is the experienced usefulness of a feature. Besides the metrics defined by MOSCOW the project will be evaluated by how well we have reached our goals set in the beginning of the project. These goals can be evaluated by analyzing how well the different stakeholders can use the end product for their respective goals.
+Besides functional evaluation of the project by the MOSCOW specifications, the project can also be evaluated by testing how well the application performs in different user scenarios.
+In the following table user scenarios for which Amsterdam In Motion could be used in will be described next to the possible relevant stakeholders.
 
-## Outlook
-Look into possibilities to develop application further.
-
-Other work. What is different about our application.
-
-Stakeholders.
+| Stakeholder         | User Scenario                                                                                                                                                                                                    |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Local Government    | - The government wants to know in what area of the city there is a need for more streetlights for runners. - The government wants to know what area would be most suitable and in need of a new sports complex.  |
+| Entrepeneurs        | A company wants to know where to build their new football/hockey store.                                                                                                                                          |
+| Individual Athletes | An athlete wants to know on what time of a day of the week the park is least busy. This way the athlete can plan their exercise accordingly.                                                                     |
