@@ -21,7 +21,7 @@ To derive this information after the collection, data must be analyzed, which wi
 This section specifies which methods will be used for the neighbourhood classification. The several steps that have to be taken to extract useful information out of the data are dispayed in a pipeline diagram, after which the steps are elaborated somewhat more.
 
 #### Overall system architecture
-In Figure 1 a graph shows how input data (e.g. tweets) are processed into neighbourhood classifications.
+The graph in Figure 1 shows how input data (e.g. tweets) are processed into neighbourhood classifications.
 <p align="center">
   <img alt="Workbench electron-browser component" src="../images/pipeline.png" width="60%"><br/>
   <i>Figure 1: Graphical representation of the proposed system architecture</i>   
