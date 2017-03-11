@@ -89,16 +89,14 @@ The visualisation can later be extended by more extensive analysis of the gather
 
 In the Table 1 the timeline of the development of the application is given. First the highest priority requirements will of course be developed, and later on in the project the other requirements will be worked on. Throughout the whole project data will be gathered from the different sources.
 
-<center>
 
-|  Week 4 	|  Week 5 	| Week 6  	| Week 7  	| Week 8  	| Week 9	|
-| ---		| ---		| ---		| ---		| ---		| ---		|
-| Idea document| Visualising data on Mapbox | Connecting data stream to Mapbox | Finalising must-have requirements | Integration more attributes | Finalising application |
-| | BM25 analytics | Taxonomy creation | Categorising data on different attributes | Dynamic selection filters | Presentation |
 
+| Week 4 	                             | Week 5   	                        | Week 6  	                       | Week 7  	                                  | Week 8                      	| Week 9                      	|
+|--------------------------------------|------------------------------------|----------------------------------|--------------------------------------------|-------------------------------|-------------------------------|
+| Idea document                        | Visualising data on Mapbox         | Connecting data stream to Mapbox | Finalising must-have requirements          | Integration more attributes   | Finalising application        |
+|                                      | BM25 analytics                     | Taxonomy creation                | Categorising data on different attributes  | Dynamic selection filters     | Presentation                  |
 _Table 1: The timeline of the development of the application_
 
-</center>
 
 ## Expected Outcomes
 As mentioned earlier in the section objective, the goal of this application is to identify and characterise neighborhoods in Amsterdam. In figure 2 a mockup of the user interface (UI) is shown, it will become visible how the UI could look.
