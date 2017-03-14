@@ -28,16 +28,11 @@ def getTweets() :
 
     tweetList = []
     for row in rows:
-        #reader = codecs.getreader("utf-8")
-        #obj = json.load(reader(row[1]))
         array = json.dumps(row[1])
         a = json.loads(array)
         print("Tweet:")
         print(a["text"].encode("utf-8").rstrip("\r\n"))
-        tweetList.append(a["text"].encode("utf-8"))
-    print("Hoi")
-    for item in tweetList:
-        print(item)
+        tweetList.append(a["text"].encode("utf-8").rstrip("\r\n"))
     return tweetList
  
 
@@ -48,7 +43,7 @@ if __name__ == '__main__' :
     Query = Query.split()
     scores = bm25.BM25Score(Query)
     print scores
-    tfidf = bm25.TFIDF()
+ #   tfidf = bm25.TFIDF()
   #  print bm25.Items()
  #   for i, tfidfscore in enumerate(tfidf):
  #       print("\n")
