@@ -2,9 +2,6 @@
 #
 # Small script to show PostgreSQL and Pyscopg together
 #
-#86.87.235.82 port 8082
-#dbname twitter
-#login user: rick pass: proost
 
 import psycopg2
 import json
