@@ -10,13 +10,15 @@ import psycopg2
 import json
 import codecs
 import bm25
+import sys
 
 globalTweetIdList = []
 
 def getTweets() : 
     print("Retrieving tweets: \n")
+    connString = "dbname='"+sys.argv[1]+"' user='"+sys.argv[2]+"' host='"+sys.argv[3]+"' password='"+sys.argv[4]+"' port='"+sys.argv[5]+"'"
     try:
-        conn = psycopg2.connect("dbname='twitter' user='rick' host='86.87.235.82' password='proost' port='8082'")
+        conn = psycopg2.connect(connString)
     except:
         print "I am unable to connect to the database"
 
@@ -40,11 +42,12 @@ def getTweets() :
  
 
 if __name__ == '__main__' :
+   
     tweetList = getTweets()
     print("Initing BM25\n")
     bm25 = bm25.BM25(tweetList, delimiter=' ')
     #Query = 'voetbal voetballen voetbalschoen scheenbeschermers scheenbeschermer arena soccer'
-    Query = 'hardlopen rennen running hard lopen run jogging marathon'
+    Query = 'hardlopen rennen running lopen run jogging marathon gerend gelopen hardgelopen ran'
     Query = Query.split()
     print("Calculating scores\n")
     scores = bm25.BM25Score(Query)
