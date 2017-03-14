@@ -74,3 +74,27 @@ class BM25 :
         items = self.dictionary.items()
         items.sort()
         return items
+
+if __name__ == '__main__' :
+    #mycorpus.txt is as following:
+    '''
+    Human machine interface for lab abc computer applications
+    A survey of user opinion of computer system response time
+    The EPS user interface management system
+    System and human system engineering testing of EPS
+    Relation of user perceived response time to error measurement
+    The generation of random binary unordered trees
+    The intersection graph of paths in trees
+    Graph IV Widths of trees and well quasi ordering
+    Graph minors A survey
+    '''
+    fn_docs = 'mycorpus.txt'
+    bm25 = BM25(fn_docs, delimiter=' ')
+    Query = 'The intersection graph of paths in trees survey Graph'
+    Query = Query.split()
+    scores = bm25.BM25Score(Query)
+    tfidf = bm25.TFIDF()
+  #  print bm25.Items()
+    for i, tfidfscore in enumerate(tfidf):
+        print("\n")
+        print i, tfidfscore
