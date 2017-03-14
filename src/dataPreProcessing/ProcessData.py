@@ -20,27 +20,31 @@ def getTweets() :
 
     cur = conn.cursor()
     try:
-        cur.execute("""SELECT * from data limit 1""")
+        cur.execute("""SELECT * from data limit 5""")
     except:
         print "I can't select from specified table!"
 
     rows = cur.fetchall()
+
+    tweetList = []
     for row in rows:
-        #reader = codecs.getreader("utf-8")
-        #obj = json.load(reader(row[1]))
         array = json.dumps(row[1])
         a = json.loads(array)
-        print(a["text"])
+        print("Tweet:")
+        print(a["text"].encode("utf-8").rstrip("\r\n"))
+        tweetList.append(a["text"].encode("utf-8").rstrip("\r\n"))
+    return tweetList
  
+
 if __name__ == '__main__' :
-    getTweets()
-    fn_docs = 'mycorpus.txt'
-    bm25 = bm25.BM25(fn_docs, delimiter=' ')
-    Query = 'The intersection graph of paths in trees survey Graph'
+    tweetList = getTweets()
+    bm25 = bm25.BM25(tweetList, delimiter=' ')
+    Query = 'kennis land'
     Query = Query.split()
     scores = bm25.BM25Score(Query)
-    tfidf = bm25.TFIDF()
+    print scores
+ #   tfidf = bm25.TFIDF()
   #  print bm25.Items()
-    for i, tfidfscore in enumerate(tfidf):
-        print("\n")
-        print i, tfidfscore
+ #   for i, tfidfscore in enumerate(tfidf):
+ #       print("\n")
+ #       print i, tfidfscore

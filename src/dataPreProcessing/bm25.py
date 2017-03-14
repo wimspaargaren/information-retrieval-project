@@ -25,13 +25,13 @@ class BM25 :
 
     def buildDictionary(self) :
         raw_data = []
-        for line in file(self.fn_docs) :
+        for line in self.fn_docs :
             raw_data.append(line.strip().split(self.delimiter))
         self.dictionary.add_documents(raw_data)
 
     def TFIDF_Generator(self, base=math.e) :
         docTotalLen = 0
-        for line in file(self.fn_docs) :
+        for line in self.fn_docs :
             doc = line.strip().split(self.delimiter)
             docTotalLen += len(doc)
             self.DocLen.append(len(doc))
@@ -88,13 +88,4 @@ if __name__ == '__main__' :
     Graph IV Widths of trees and well quasi ordering
     Graph minors A survey
     '''
-    fn_docs = 'mycorpus.txt'
-    bm25 = BM25(fn_docs, delimiter=' ')
-    Query = 'The intersection graph of paths in trees survey Graph'
-    Query = Query.split()
-    scores = bm25.BM25Score(Query)
-    tfidf = bm25.TFIDF()
-  #  print bm25.Items()
-    for i, tfidfscore in enumerate(tfidf):
-        print("\n")
-        print i, tfidfscore
+   
