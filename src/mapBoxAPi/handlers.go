@@ -2,7 +2,6 @@ package main
 
 import (
 	"database/sql"
-	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -20,7 +19,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 //GetAllIssues retrieves all issues.
 func GetPoints(w http.ResponseWriter, r *http.Request) {
 	var err error
-	db, err = "withoutpass"
+	db, err = "iets"
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
 	}
@@ -55,14 +54,15 @@ func GetPoints(w http.ResponseWriter, r *http.Request) {
 	// jsonstring += `)]`
 
 	//bla := json.Unmarshal(jsonstring)
-	res, err := json.Marshal(result)
-	if err != nil {
-		fmt.Println(err)
-	}
+	// res, err := json.Marshal(result)
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// fmt.Println(res)
 
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	// w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	render := render.New()
-	render.JSON(w, http.StatusOK, string(res))
+	render.JSON(w, http.StatusOK, result)
 }
 
 type Response struct {
