@@ -26,8 +26,7 @@ func main() {
 	for rows.Next() {
 		// var tweet twitter.Tweet
 		var i int
-		var data []byte
-		err = rows.Scan(&i, &data)
+		err = rows.Scan(&i)
 		if err != nil {
 			fmt.Println("this did not work")
 		}
