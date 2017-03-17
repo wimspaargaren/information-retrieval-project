@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
@@ -32,9 +33,9 @@ func main() {
 
 	var err error
 	if os.Getenv("DEV") == "TRUE" {
-		db, err = sql.Open("postgres", "postgres://postgres:postgres@127.0.0.1/twitter?sslmode=disable")
+		db, err = sql.Open("postgres", "postgres://user:pass@86.87.235.82:8082/twitter?sslmode=disable")
 	} else {
-		db, err = sql.Open("postgres", "postgres://rick:proost@127.0.0.1:8082/twitter?sslmode=disable")
+		db, err = sql.Open("postgres", "postgres://postgres:postgres@127.0.0.1/twitter?sslmode=disable")
 	}
 
 	consumerKey := opts.TCKey
@@ -64,9 +65,29 @@ func main() {
 			if err != nil {
 				fmt.Printf("error: %v\n", err)
 			}
+
+			var t time.Time
+			var timeErr error
+			t, timeErr = time.Parse(time.RubyDate, tweet.CreatedAt)
+			if timeErr != nil {
+				fmt.Println(timeErr)
+			}
+			day := t.Weekday()
+			var daypart string
+			h := t.Hour()
+			if h >= 0 && h < 6 {
+				daypart = "Night"
+			} else if h >= 6 && h < 12 {
+				daypart = "Morning"
+			} else if h >= 12 && h < 18 {
+				daypart = "Midday"
+			} else {
+				daypart = "Evening"
+			}
+
 			var id int
-			dbErr := tx.QueryRow("INSERT INTO data (tweet) VALUES ($1) RETURNING id",
-				output).Scan(&id)
+			dbErr := tx.QueryRow("INSERT INTO data (tweet, text, long, lat, day, daypart) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id",
+				output, tweet.Text, tweet.Coordinates.Coordinates[0], tweet.Coordinates.Coordinates[1], day.String(), daypart).Scan(&id)
 			if dbErr != nil {
 				fmt.Println(dbErr)
 			}
