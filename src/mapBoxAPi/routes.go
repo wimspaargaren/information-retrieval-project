@@ -1,10 +1,6 @@
 package main
 
-import (
-	"net/http"
-
-	"github.com/gorilla/mux"
-)
+import "net/http"
 
 //Route route struct containing the name of the rout, the http method, the pattern and the function which handles the route.
 type Route struct {
@@ -18,19 +14,19 @@ type Route struct {
 type Routes []Route
 
 //NewRouter initializes the mux with the defined routes.
-func NewRouter() *mux.Router {
+// func NewRouter() *mux.Router {
 
-	router := mux.NewRouter().StrictSlash(true)
-	for _, route := range routes {
-		router.
-			Methods(route.Method).
-			Path(route.Pattern).
-			Name(route.Name).
-			Handler(route.HandlerFunc)
-	}
+// 	router := mux.NewRouter().StrictSlash(true)
+// 	for _, route := range routes {
+// 		router.
+// 			Methods(route.Method).
+// 			Path(route.Pattern).
+// 			Name(route.Name).
+// 			Handler(route.HandlerFunc)
+// 	}
 
-	return router
-}
+// 	return router
+// }
 
 var routes = Routes{
 	Route{
