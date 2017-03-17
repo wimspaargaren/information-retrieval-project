@@ -19,15 +19,14 @@ func Index(w http.ResponseWriter, r *http.Request) {
 //GetAllIssues retrieves all issues.
 func GetPoints(w http.ResponseWriter, r *http.Request) {
 	var err error
-	db, err = "iets"
+	db, err = "REPLACE THIS"
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
 	}
-	rows, errQ := db.Query("SELECT lat,long,category FROM data Where category = 'hardlopen' limit 10")
+	rows, errQ := db.Query("SELECT lat,long,category FROM data Where category = 'hardlopen'")
 	if errQ != nil {
 		fmt.Printf("error: %v\n", err)
 	}
-	// jsonstring := `"type": "FeatureCollection", "features": [`
 	var result Response
 	result.Type = "FeatureCollection"
 	for rows.Next() {
@@ -41,26 +40,12 @@ func GetPoints(w http.ResponseWriter, r *http.Request) {
 		}
 		resp.Type = "Feature"
 		resp.Geometry.Type = "Point"
-		resp.Geometry.Coordinates[0] = lat
-		resp.Geometry.Coordinates[1] = long
+		resp.Geometry.Coordinates[0] = long
+		resp.Geometry.Coordinates[1] = lat
 		resp.Properties.Category = category
 		result.Features = append(result.Features, resp)
-		fmt.Println(lat)
-		fmt.Println(long)
-		fmt.Println(category)
-		// jsonstring += `{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [` + strconv.FormatFloat(lat, 'f', 6, 64) + `,` + strconv.FormatFloat(long, 'f', 6, 64) + `]},`
-		// jsonstring += `"properties": { "sport-category": "` + category + `" }`
 	}
-	// jsonstring += `)]`
 
-	//bla := json.Unmarshal(jsonstring)
-	// res, err := json.Marshal(result)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// }
-	// fmt.Println(res)
-
-	// w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	render := render.New()
 	render.JSON(w, http.StatusOK, result)
 }
