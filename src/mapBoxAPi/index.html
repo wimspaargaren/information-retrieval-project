@@ -10,6 +10,7 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.33.1/mapbox-gl.js'></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src='js/mapbox.js'></script>
+    <script src='js/filter.js'></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.33.1/mapbox-gl.css' rel='stylesheet' />
@@ -33,47 +34,45 @@
 
 <body>
     <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+
         <a class="navmenu-brand" href="#">Amsterdam in Motion</a>
-        <div class="row">
-            <div class="col-sm-9 col-centered">
-                <p>
-                    Select the type of data you want to show:
-                </p>
-                <select id="dataRepresentationSelect" class="selectpicker">
-                    <option>Points</option>
-                    <option>Neighbourhoods</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-9 col-centered">
-                <p>
-                    Select the day of the week to show data from:
-                </p>
-                <select class="selectpicker" data-selected-text-format="count">
-                <option>Monday</option>
-                <option>Tuesday</option>
-                <option>Wednesday</option>
-                <option>Thursday</option>
-                <option>Friday</option>
-                <option>Saturday</option>
-                <option>Sunday</option>
-                </select>
-            </div>
+        <br />
+        <hr />
+        <div style="padding: 10px">
+            <label for="dayfilter">Filter on day</label>
+            <select id="dataRepresentationSelect" class="selectpicker">
+                    <option value="0">Points</option>
+                    <option value="1">Neighbourhoods</option>
+            </select>
         </div>
 
-        <div class="row">
-            <div class="col-sm-9 col-centered">
-                <p>
-                    Select the day of the week to show data from:
-                </p>
-                <select class="selectpicker" data-selected-text-format="count">
-                    <option>Morning</option>
-                    <option>Midday</option>
-                    <option>Evening</option>
-                    <option>Night</option>
+        <br />
+        <hr />
+        <div style="padding: 10px">
+            <label for="dayfilter">Filter on day</label>
+            <select class="form-control selectpicker" id="dayfilter">
+                    <option value="0">None</option>
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                    <option value="6">Saturday</option>
+                    <option value="7">Sunday</option>
+            </select>
+        </div>
+
+        <br />
+        <hr />
+        <div style="padding: 10px">
+            <label for="dayfilter">Filter on daypart</label>
+            <select class="selectpicker">
+                    <option value="0">None</option>
+                    <option value="1">Morning</option>
+                    <option value="2">Midday</option>
+                    <option value="3">Evening</option>
+                    <option value="4">Night</option>
                 </select>
-            </div>
         </div>
 
 
