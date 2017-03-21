@@ -19,7 +19,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 //GetAllIssues retrieves all issues.
 func GetPoints(w http.ResponseWriter, r *http.Request) {
 	var err error
-	db, err = "replace"
+	db, err = sql.Open("postgres", "postgres://rick:inforetrieval123@86.87.235.82:8082/twitter?sslmode=disable")
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
 	}
