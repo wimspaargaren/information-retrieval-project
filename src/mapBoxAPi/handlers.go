@@ -23,7 +23,7 @@ func GetPoints(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
 	}
-	rows, errQ := db.Query("SELECT lat,long,category, day, daypart FROM data Where category = 'hardlopen'")
+	rows, errQ := db.Query("SELECT lat,long,category, day, daypart FROM data Where category IS NOT NULL")
 	if errQ != nil {
 		fmt.Printf("error: %v\n", err)
 	}

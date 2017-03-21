@@ -44,9 +44,16 @@ $(document).ready(function () {
                     property: 'sport-category',
                     type: 'categorical',
                     stops: [
-                        ['Voetbal', 'red'],
-                        ['Tennis', 'green'],
-                        ['hardlopen', 'blue']
+                        ['soccer', 'red'],
+                        ['fitness', 'green'],
+                        ['running', 'blue'],
+                        ['swimming', 'purple'],
+                        ['fightingsport', 'yellow'],
+                        ['cycling', 'orange'],
+                        ['gymnastics', 'cyan'],
+                        ['yoga', 'brown'],
+                        ['hockey', 'white'],
+                        ['bootcamp', 'pink']
                     ]
                 }
             }
