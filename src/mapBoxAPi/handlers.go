@@ -19,7 +19,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 //GetAllIssues retrieves all issues.
 func GetPoints(w http.ResponseWriter, r *http.Request) {
 	var err error
-	db, err = "REPLACE THIS"
+	db, err = "replace"
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
 	}
