@@ -1,0 +1,25 @@
+body { 
+      margin:0; 
+      padding:0; 
+       overflow:hidden;
+}
+#map { 
+    position:absolute; top:0; bottom:0; 
+    width:100%;
+    height:100vh;
+}
+
+.navbar-toggle{
+    float: left;
+    display: block;
+    margin-left: 10px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.navmenu{
+    overflow:hidden;
+}

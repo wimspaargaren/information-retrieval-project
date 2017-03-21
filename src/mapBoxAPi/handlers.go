@@ -19,11 +19,11 @@ func Index(w http.ResponseWriter, r *http.Request) {
 //GetAllIssues retrieves all issues.
 func GetPoints(w http.ResponseWriter, r *http.Request) {
 	var err error
-	db, err = "REPLACE THIS"
+	db, err = sql.Open("postgres", "REPLACE")
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
 	}
-	rows, errQ := db.Query("SELECT lat,long,category FROM data Where category = 'hardlopen'")
+	rows, errQ := db.Query("SELECT lat,long,category, day, daypart FROM data Where category IS NOT NULL")
 	if errQ != nil {
 		fmt.Printf("error: %v\n", err)
 	}
@@ -34,7 +34,9 @@ func GetPoints(w http.ResponseWriter, r *http.Request) {
 		var lat float64
 		var long float64
 		var category string
-		err = rows.Scan(&lat, &long, &category)
+		var day string
+		var daypart string
+		err = rows.Scan(&lat, &long, &category, &day, &daypart)
 		if err != nil {
 			fmt.Println("this did not work")
 		}
@@ -43,6 +45,8 @@ func GetPoints(w http.ResponseWriter, r *http.Request) {
 		resp.Geometry.Coordinates[0] = long
 		resp.Geometry.Coordinates[1] = lat
 		resp.Properties.Category = category
+		resp.Properties.Day = day
+		resp.Properties.Daypart = daypart
 		result.Features = append(result.Features, resp)
 	}
 
@@ -68,4 +72,6 @@ type Geometry struct {
 
 type Props struct {
 	Category string `json:"sport-category"`
+	Day      string `json:"day"`
+	Daypart  string `json:"daypart"`
 }

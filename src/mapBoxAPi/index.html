@@ -1,81 +1,95 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8' />
     <title></title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.33.1/mapbox-gl.js'></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src='js/mapbox.js'></script>
+    <script src='js/filter.js'></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.33.1/mapbox-gl.css' rel='stylesheet' />
-    <style>
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
-    </style>
+    <link href='css/mapboxCSS.css' rel='stylesheet' />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+
+
+
+
+    <link href="jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
 </head>
+<!--class="canvas-slid" style="position: relative; left: 300px; overflow: hidden; right: -300px;"-->"
+<!-- show in canvas-slid -->
+
 <body>
-<div id='map' ></div>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1Ijoid2ltc3BhYXJnYXJlbiIsImEiOiJjajBjdGljODAwMDJrMnFud2x0c3M4YjZmIn0.D22MMfOi82i6LRjyntBwRw';
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v9',
-	zoom: 11,
+    <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
 
-	center: [ 4.899113,52.372740]
-});
+        <a class="navmenu-brand" href="#">Amsterdam in Motion</a>
+        <br />
+        <hr />
+        <div style="padding: 10px">
+            <label for="dayfilter">Filter on datatype</label>
+            <select id="dataRepresentationSelect" class="selectpicker">
+                    <option value="0">Points</option>
+                    <option value="1">Neighbourhoods</option>
+            </select>
+        </div>
 
-var geojson;
-  var request = $.ajax({
-        url: "http://localhost:8080/getpoints",
-        method: "GET",
-        dataType: "json"
-        });
-        request.done(function( msg ) {
-		geojson = msg;
+        <br />
+        <div style="padding: 10px">
+            <label for="dayfilter">Filter on day</label>
+            <select class="form-control selectpicker" id="dayfilter">
+                    <option value="0">None</option>
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                    <option value="6">Saturday</option>
+                    <option value="7">Sunday</option>
+            </select>
+        </div>
 
-        });
-        request.fail(function( jqXHR, textStatus ) {
-            alert(textStatus);
-        });
-
-
-map.on('load', function() {
-	console.log(geojson);
-    // Add a single point to the map
-    map.addSource('point', {
-        "type": "geojson",
-        "data": geojson
-    });
-
-    map.addLayer({
-        "id": "point",
-        "type": "circle",
-        "source": "point",
-         'paint': {
-            // make circles larger as the user zooms from z12 to z22
-            'circle-radius': {
-                'base': 5,
-                'stops': [[12, 6], [22, 180]]
-            },
-            // color circles by ethnicity, using data-driven styles
-            'circle-color': {
-                property: 'sport-category',
-                type: 'categorical',
-                stops: [
-                    ['Voetbal', 'red'],
-                    ['Tennis', 'green'],
-                    ['hardlopen', 'blue']
-					]
-            }
-        }
-    });
-
-});
+        <br />
+        <div style="padding: 10px">
+            <label for="daypartfilter">Filter on daypart</label>
+            <select id="daypartfilter"class="selectpicker">
+                    <option value="0">None</option>
+                    <option value="1">Morning</option>
+                    <option value="2">Midday</option>
+                    <option value="3">Evening</option>
+                    <option value="4">Night</option>
+                </select>
+        </div>
 
 
- 
-  
-</script>
+
+    </nav>
+    <div class="canvas canvas-slide">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div id='map'></div>
+            </div>
+        </div>
 
 </body>
+
 </html>
