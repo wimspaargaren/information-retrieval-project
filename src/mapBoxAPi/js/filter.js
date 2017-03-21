@@ -1,33 +1,45 @@
 
 
+var dayFilterVal = "0";
+var dayPartFilterVal = "0";
+var pointOrHood = "point";
+
 $( document ).ready(function() {
     $('#dayfilter').on('change', function(event) {
-        filterOnDay(parseInt(event.target.value));
+        dayFilterVal = event.target.value;
+        filter();
+    })
+
+    $('#daypartfilter').on('change', function(event) {
+        dayPartFilterVal = event.target.value;
+        filter();
     })
 });
 
-function filterOnDay(number) {
-    if(number == 0) {
+
+function filter() {
+    if(dayFilterVal == "0" && dayPartFilterVal == "0") {
         setDefaultLayer();
         return;
     }
-    var day = getDayFromNumber(number);
-    map.removeSource("point")
-
-    var resJson = {features: [], type: "FeatureCollection"};
-    for(var i=0; i<geojson.features.length; i++) {
-        if(geojson.features[i].properties.day == day) {
-            resJson.features.push(geojson.features[i]);
-        }
+    var resJson = geojson;
+    if(dayFilterVal != "0") {
+        resJson  = filterOnDay(parseInt(dayFilterVal));
+        console.log("day filter");
+    }
+    if(dayPartFilterVal != "0") {
+        resJson = filterOnDayPart(resJson, parseInt(dayPartFilterVal));
+        console.log("daypart filter");
     }
 
+    map.removeSource("point");
     map.addSource('point', {
         "type": "geojson",
         "data": resJson
     });
 
     map.addLayer({
-        "id": day,
+        "id": "point",
         "type": "circle",
         "source": "point",
         'paint': {
@@ -48,8 +60,22 @@ function filterOnDay(number) {
             }
         }
     });
-    console.log("Filter on " + day);
-    
+}
+
+function filterOnDay(number) {
+    if(number == 0) {
+        setDefaultLayer();
+        return geojson;
+    }
+    var day = getDayFromNumber(number);
+
+    var resJson = {features: [], type: "FeatureCollection"};
+    for(var i=0; i<geojson.features.length; i++) {
+        if(geojson.features[i].properties.day == day) {
+            resJson.features.push(geojson.features[i]);
+        }
+    }
+    return resJson;
 }
 
 function getDayFromNumber(number) {
@@ -64,6 +90,33 @@ function getDayFromNumber(number) {
         default: return "Monday";
     }
 }
+
+function filterOnDayPart(res, number) {
+    if(number == 0) {
+        setDefaultLayer();
+        return geojson;
+    }
+    var daypart = getDayPartFromNumber(number);
+
+    var resJson = {features: [], type: "FeatureCollection"};
+    for(var i=0; i<res.features.length; i++) {
+        if(res.features[i].properties.daypart == daypart) {
+            resJson.features.push(res.features[i]);
+        }
+    }
+    return resJson;
+}
+
+function getDayPartFromNumber(number) {
+    switch(number) {
+        case 1 : return "Morning";
+        case 2 : return "Midday";
+        case 3 : return "Evening";
+        case 4 : return "Night";
+        default: return "Morning";
+    }
+}
+
 
 function setDefaultLayer() {
     map.removeSource("point")
