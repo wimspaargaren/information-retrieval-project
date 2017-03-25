@@ -25,9 +25,8 @@ func main() {
 	mux := mux.NewRouter()
 
 	// Routes
-	mux.HandleFunc("/index", Index).Methods("GET")
 	mux.HandleFunc("/getpoints", GetPoints).Methods("GET")
-
+	mux.HandleFunc("/getpolygons", GetPolyGons).Methods("GET")
 	n := negroni.Classic()
 	n.Use(c)
 	n.UseHandler(mux)

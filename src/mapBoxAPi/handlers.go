@@ -4,22 +4,19 @@ import (
 	"database/sql"
 	"fmt"
 	"net/http"
+	"os"
 
 	_ "github.com/lib/pq"
 	"github.com/unrolled/render"
 )
 
 var db *sql.DB
-
-//Index gives some info about the API.
-func Index(w http.ResponseWriter, r *http.Request) {
-
-}
+var constring string = os.Getenv("CONSTRING")
 
 //GetAllIssues retrieves all issues.
 func GetPoints(w http.ResponseWriter, r *http.Request) {
 	var err error
-	db, err = sql.Open("postgres", "REPLACE")
+	db, err = sql.Open("postgres", constring)
 	if err != nil {
 		fmt.Printf("error: %v\n", err)
 	}
@@ -52,6 +49,31 @@ func GetPoints(w http.ResponseWriter, r *http.Request) {
 
 	render := render.New()
 	render.JSON(w, http.StatusOK, result)
+}
+
+func GetPolyGons(w http.ResponseWriter, r *http.Request) {
+	var err error
+	fmt.Println("CONSTRING: ", constring)
+	db, err = sql.Open("postgres", constring)
+	if err != nil {
+		fmt.Printf("connection error: %v\n", err)
+	}
+	rows, errQ := db.Query("SELECT id,cluster_set_id,data_ids FROM clusters")
+	if errQ != nil {
+		fmt.Printf("error: %v\n", err)
+	}
+	var result Response
+	result.Type = "FeatureCollection"
+	for rows.Next() {
+		// var id int
+		// var clust_set_id int
+		// var data_ids []int
+		// err = rows.Scan(&id, &clust_set_id, &data_ids)
+		// if err != nil {
+		// 	fmt.Println("this did not work")
+		// }
+		// fmt.Println(data_ids)
+	}
 }
 
 type Response struct {
