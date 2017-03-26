@@ -4,14 +4,13 @@ import (
 	"database/sql"
 	"fmt"
 	"net/http"
-	"os"
+	"strconv"
 
 	_ "github.com/lib/pq"
 	"github.com/unrolled/render"
 )
 
 var db *sql.DB
-var constring string = os.Getenv("CONSTRING")
 
 //GetAllIssues retrieves all issues.
 func GetPoints(w http.ResponseWriter, r *http.Request) {
@@ -35,7 +34,7 @@ func GetPoints(w http.ResponseWriter, r *http.Request) {
 		var daypart string
 		err = rows.Scan(&lat, &long, &category, &day, &daypart)
 		if err != nil {
-			fmt.Println("this did not work")
+			fmt.Println("this did not work", err)
 		}
 		resp.Type = "Feature"
 		resp.Geometry.Type = "Point"
@@ -51,29 +50,68 @@ func GetPoints(w http.ResponseWriter, r *http.Request) {
 	render.JSON(w, http.StatusOK, result)
 }
 
-func GetPolyGons(w http.ResponseWriter, r *http.Request) {
+func GetPolygons(w http.ResponseWriter, r *http.Request) {
 	var err error
 	fmt.Println("CONSTRING: ", constring)
 	db, err = sql.Open("postgres", constring)
 	if err != nil {
 		fmt.Printf("connection error: %v\n", err)
 	}
-	rows, errQ := db.Query("SELECT id,cluster_set_id,data_ids FROM clusters")
+	rows, errQ := db.Query("SELECT id, UNNEST(data_ids) FROM clusters")
 	if errQ != nil {
 		fmt.Printf("error: %v\n", err)
 	}
-	var result Response
+
+	var result PolyResponse
 	result.Type = "FeatureCollection"
+	idTemp := -1
+	var intArray []int
+	var test string
 	for rows.Next() {
-		// var id int
-		// var clust_set_id int
-		// var data_ids []int
-		// err = rows.Scan(&id, &clust_set_id, &data_ids)
-		// if err != nil {
-		// 	fmt.Println("this did not work")
-		// }
-		// fmt.Println(data_ids)
+		var id int
+		var tweetID int
+		err = rows.Scan(&id, &tweetID)
+		if err != nil {
+			fmt.Println("this did not work", err)
+		}
+		if idTemp != id {
+			if test != "" {
+				//Polygon feature
+				var resp PolygonFeature
+				resp.Type = "Feature"
+				resp.Geometry.Type = "Polygon"
+				rows2, errQ := db.Query("SELECT lat, long FROM data WHERE " + test)
+				tempSlice := [][2]float64{}
+				if errQ != nil {
+					fmt.Printf("error: %v\n", err)
+				}
+				for rows2.Next() {
+					var long float64
+					var lat float64
+					err = rows2.Scan(&lat, &long)
+					var test2 [2]float64
+					test2[0] = long
+					test2[1] = lat
+					tempSlice = append(tempSlice, test2)
+
+				}
+				resp.Geometry.Coordinates = append(resp.Geometry.Coordinates, tempSlice)
+				result.Features = append(result.Features, resp)
+
+			}
+
+			idTemp = id
+			intArray = []int{}
+			test = "id = " + strconv.Itoa(tweetID)
+			intArray = append(intArray, tweetID)
+		} else {
+			test += " OR id = " + strconv.Itoa(tweetID)
+
+			intArray = append(intArray, tweetID)
+		}
 	}
+	render := render.New()
+	render.JSON(w, http.StatusOK, result)
 }
 
 type Response struct {
@@ -96,4 +134,19 @@ type Props struct {
 	Category string `json:"sport-category"`
 	Day      string `json:"day"`
 	Daypart  string `json:"daypart"`
+}
+
+type PolyResponse struct {
+	Type     string           `json:"type"`
+	Features []PolygonFeature `json:"features"`
+}
+
+type PolygonFeature struct {
+	Type     string                 `json:"type"`
+	Geometry PolygonCoordinatesList `json:"geometry"`
+}
+
+type PolygonCoordinatesList struct {
+	Type        string         `json:"type"`
+	Coordinates [][][2]float64 `json:"coordinates"`
 }

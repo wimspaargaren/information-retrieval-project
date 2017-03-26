@@ -10,11 +10,12 @@ $(document).ready(function () {
     });
 
     var request = $.ajax({
-        url: "http://localhost:8080/getpoints",
+        url: "http://localhost:8080/getpolygons",
         method: "GET",
         dataType: "json"
     });
     request.done(function (msg) {
+        console.log(msg)
         geojson = msg;
 
     });
@@ -31,35 +32,55 @@ $(document).ready(function () {
 
         map.addLayer({
             "id": "point",
-            "type": "circle",
+            "type": "fill",
             "source": "point",
+            'layout': {},
             'paint': {
-                // make circles larger as the user zooms from z12 to z22
-                'circle-radius': {
-                    'base': 5,
-                    'stops': [[12, 6], [22, 180]]
-                },
-                // color circles by ethnicity, using data-driven styles
-                'circle-color': {
-                    property: 'sport-category',
-                    type: 'categorical',
-                    stops: [
-                        ['soccer', 'red'],
-                        ['fitness', 'green'],
-                        ['running', 'blue'],
-                        ['swimming', 'purple'],
-                        ['fightingsport', 'yellow'],
-                        ['cycling', 'orange'],
-                        ['gymnastics', 'cyan'],
-                        ['yoga', 'brown'],
-                        ['hockey', 'white'],
-                        ['bootcamp', 'pink']
-                    ]
-                }
+                'fill-color': '#088',
+                'fill-opacity': 0.8
             }
         });
 
     });
+
+    // map.on('load', function () {
+    //     // Add points to the map
+    //     map.addSource('point', {
+    //         "type": "geojson",
+    //         "data": geojson
+    //     });
+
+    //     map.addLayer({
+    //         "id": "point",
+    //         "type": "circle",
+    //         "source": "point",
+    //         'paint': {
+    //             // make circles larger as the user zooms from z12 to z22
+    //             'circle-radius': {
+    //                 'base': 5,
+    //                 'stops': [[12, 6], [22, 180]]
+    //             },
+    //             // color circles by ethnicity, using data-driven styles
+    //             'circle-color': {
+    //                 property: 'sport-category',
+    //                 type: 'categorical',
+    //                 stops: [
+    //                     ['soccer', 'red'],
+    //                     ['fitness', 'green'],
+    //                     ['running', 'blue'],
+    //                     ['swimming', 'purple'],
+    //                     ['fightingsport', 'yellow'],
+    //                     ['cycling', 'orange'],
+    //                     ['gymnastics', 'cyan'],
+    //                     ['yoga', 'brown'],
+    //                     ['hockey', 'white'],
+    //                     ['bootcamp', 'pink']
+    //                 ]
+    //             }
+    //         }
+    //     });
+
+    // });
 
 });
 
