@@ -9,36 +9,22 @@ $(document).ready(function () {
         center: [4.899113, 52.372740]
     });
 
-    var request = $.ajax({
+    var requestPolygons = $.ajax({
         url: "http://localhost:8080/getpolygons",
         method: "GET",
         dataType: "json"
     });
-    request.done(function (msg) {
+    requestPolygons.done(function (msg) {
         console.log(msg)
         geojson = msg;
-        map.removeSource("point");
-        map.addSource('point', {
+        map.addSource('polygon', {
             "type": "geojson",
             "data": geojson
         });
-
-    });
-    request.fail(function (jqXHR, textStatus) {
-        alert(textStatus);
-    });
-
-    map.on('load', function () {
-        // Add points to the map
-        map.addSource('point', {
-            "type": "geojson",
-            "data": geojson
-        });
-
         map.addLayer({
-            "id": "point",
+            "id": "polygon",
             "type": "fill",
-            "source": "point",
+            "source": "polygon",
             'layout': {},
             'paint': {
                 'fill-color': '#088',
@@ -46,6 +32,13 @@ $(document).ready(function () {
             }
         });
 
+    });
+    requestPolygons.fail(function (jqXHR, textStatus) {
+        alert(textStatus);
+    });
+
+    map.on('load', function () {
+      
     });
 
     // map.on('load', function () {

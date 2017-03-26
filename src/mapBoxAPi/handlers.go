@@ -12,7 +12,7 @@ import (
 
 var db *sql.DB
 
-//GetAllIssues retrieves all issues.
+//GetPoints retrieves all points.
 func GetPoints(w http.ResponseWriter, r *http.Request) {
 	var err error
 	db, err = sql.Open("postgres", constring)
@@ -50,6 +50,7 @@ func GetPoints(w http.ResponseWriter, r *http.Request) {
 	render.JSON(w, http.StatusOK, result)
 }
 
+//GetPolygons retrieves all polygons.
 func GetPolygons(w http.ResponseWriter, r *http.Request) {
 	var err error
 	fmt.Println("CONSTRING: ", constring)
