@@ -17,6 +17,11 @@ $(document).ready(function () {
     request.done(function (msg) {
         console.log(msg)
         geojson = msg;
+        map.removeSource("point");
+        map.addSource('point', {
+            "type": "geojson",
+            "data": geojson
+        });
 
     });
     request.fail(function (jqXHR, textStatus) {
