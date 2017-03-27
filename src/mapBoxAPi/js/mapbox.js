@@ -1,85 +1,79 @@
 mapboxgl.accessToken = 'pk.eyJ1Ijoid2ltc3BhYXJnYXJlbiIsImEiOiJjajBjdGljODAwMDJrMnFud2x0c3M4YjZmIn0.D22MMfOi82i6LRjyntBwRw';
 var map;
 var geojson;
+var geojsonPoly;
 $(document).ready(function () {
     map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v9',
+        style: 'mapbox://styles/mapbox/light-v9',
         zoom: 11,
         center: [4.899113, 52.372740]
     });
 
-    var requestPolygons = $.ajax({
-        url: "http://localhost:8080/getpolygons",
-        method: "GET",
-        dataType: "json"
-    });
-    requestPolygons.done(function (msg) {
-        console.log(msg)
-        geojson = msg;
-        map.addSource('polygon', {
-            "type": "geojson",
-            "data": geojson
+    function getPolygons() {
+        var requestPolygons = $.ajax({
+            url: "http://localhost:8080/getpolygons",
+            method: "GET",
+            dataType: "json"
         });
-        map.addLayer({
-            "id": "polygon",
-            "type": "fill",
-            "source": "polygon",
-            'layout': {},
-            'paint': {
-                'fill-color': '#088',
-                'fill-opacity': 0.8
-            }
-        });
+        requestPolygons.done(function (msg) {
+            geojsonPoly = msg;
+            map.addSource('polygon', {
+                "type": "geojson",
+                "data": geojsonPoly
+            });
+            map.addLayer({
+                "id": "polygon",
+                "type": "fill",
+                "source": "polygon",
+                'layout': {},
+                'paint': {
+                    'fill-color': '#088',
+                    'fill-opacity': 0.8
+                }
+            });
 
-    });
-    requestPolygons.fail(function (jqXHR, textStatus) {
-        alert(textStatus);
-    });
+        });
+        requestPolygons.fail(function (jqXHR, textStatus) {
+            alert(textStatus);
+        });
+    }
+
+    function getPoints() {
+        var requestPolygons = $.ajax({
+            url: "http://localhost:8080/getpoints",
+            method: "GET",
+            dataType: "json"
+        });
+        requestPolygons.done(function (msg) {
+            geojson = msg;
+        });
+        requestPolygons.fail(function (jqXHR, textStatus) {
+            alert(textStatus);
+        });
+    }
+    getPolygons();
+    getPoints();
 
     map.on('load', function () {
-      
+
+        map.getCanvas().style.cursor = 'default';
+        var layers = ['Soccer', 'Fitness', 'Running', 'Swimming', 'Fighting Sport', 'Cycling', 'Gymnastics', 'Yoga', 'Hockey', 'Bootcamp'];
+        var colors = ['red', 'green', 'blue', 'purple', 'yellow', 'orange', 'cyan', 'brown', 'white', 'pink'];
+        for (i = 0; i < layers.length; i++) {
+            var color = colors[i];
+            var item = document.createElement('div');
+            var key = document.createElement('span');
+            key.className = 'legend-key';
+            key.style.backgroundColor = color;
+
+            var value = document.createElement('span');
+            value.innerHTML = layers[i];
+            item.appendChild(key);
+            item.appendChild(value);
+            $("#pd")[0].appendChild(item);
+        }
     });
-
-    // map.on('load', function () {
-    //     // Add points to the map
-    //     map.addSource('point', {
-    //         "type": "geojson",
-    //         "data": geojson
-    //     });
-
-    //     map.addLayer({
-    //         "id": "point",
-    //         "type": "circle",
-    //         "source": "point",
-    //         'paint': {
-    //             // make circles larger as the user zooms from z12 to z22
-    //             'circle-radius': {
-    //                 'base': 5,
-    //                 'stops': [[12, 6], [22, 180]]
-    //             },
-    //             // color circles by ethnicity, using data-driven styles
-    //             'circle-color': {
-    //                 property: 'sport-category',
-    //                 type: 'categorical',
-    //                 stops: [
-    //                     ['soccer', 'red'],
-    //                     ['fitness', 'green'],
-    //                     ['running', 'blue'],
-    //                     ['swimming', 'purple'],
-    //                     ['fightingsport', 'yellow'],
-    //                     ['cycling', 'orange'],
-    //                     ['gymnastics', 'cyan'],
-    //                     ['yoga', 'brown'],
-    //                     ['hockey', 'white'],
-    //                     ['bootcamp', 'pink']
-    //                 ]
-    //             }
-    //         }
-    //     });
-
-    // });
-
 });
 
 
