@@ -3,6 +3,15 @@ var map;
 var geojson;
 var geojsonPoly;
 $(document).ready(function () {
+     $('#showlegend').on('change', function (event) {
+        if(event.target.checked){
+            $("#features")[0].style.display = "block";
+        }else{
+            $("#features")[0].style.display = "none";
+        }
+    })
+
+
     map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v9',

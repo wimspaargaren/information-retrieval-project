@@ -7,13 +7,17 @@ var pointOrHood = "point";
 
 $(document).ready(function () {
     $('#dayfilter').on('change', function (event) {
-        dayFilterVal = event.target.value;
-        filter();
+        if ($("#dataRepresentationSelect")[0].value === "1") {
+            dayFilterVal = event.target.value;
+            filter();
+        }
     })
 
     $('#daypartfilter').on('change', function (event) {
-        dayPartFilterVal = event.target.value;
-        filter();
+        if ($("#dataRepresentationSelect")[0].value === "1") {
+            dayPartFilterVal = event.target.value;
+            filter();
+        }
     })
 
     $('#dataRepresentationSelect').on('change', function (event) {
@@ -23,7 +27,7 @@ $(document).ready(function () {
 });
 
 function filterData() {
-    if (dataFilterVal == "1") {
+    if (dataFilterVal === "1") {
         map.removeSource("polygon");
         map.removeLayer("polygon");
         map.addSource('point', {
@@ -60,7 +64,6 @@ function filterData() {
             }
         });
     } else {
-        console.log(geojsonPoly);
         map.removeSource("point");
         map.removeLayer("point");
         map.addSource('polygon', {
@@ -88,14 +91,13 @@ function filter() {
     var resJson = geojson;
     if (dayFilterVal != "0") {
         resJson = filterOnDay(parseInt(dayFilterVal));
-        console.log("day filter");
     }
     if (dayPartFilterVal != "0") {
         resJson = filterOnDayPart(resJson, parseInt(dayPartFilterVal));
-        console.log("daypart filter");
     }
 
     map.removeSource("point");
+    map.removeLayer("point");
     map.addSource('point', {
         "type": "geojson",
         "data": resJson
@@ -190,7 +192,7 @@ function getDayPartFromNumber(number) {
 
 function setDefaultLayer() {
     map.removeSource("point")
-
+    map.removeLayer("point");
     map.addSource('point', {
         "type": "geojson",
         "data": geojson
