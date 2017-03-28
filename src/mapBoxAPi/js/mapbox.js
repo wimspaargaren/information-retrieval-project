@@ -3,10 +3,10 @@ var map;
 var geojson;
 var geojsonPoly;
 $(document).ready(function () {
-     $('#showlegend').on('change', function (event) {
-        if(event.target.checked){
+    $('#showlegend').on('change', function (event) {
+        if (event.target.checked) {
             $("#features")[0].style.display = "block";
-        }else{
+        } else {
             $("#features")[0].style.display = "none";
         }
     })
@@ -27,6 +27,7 @@ $(document).ready(function () {
         });
         requestPolygons.done(function (msg) {
             geojsonPoly = msg;
+            console.log(geojsonPoly);
             map.addSource('polygon', {
                 "type": "geojson",
                 "data": geojsonPoly
@@ -37,7 +38,22 @@ $(document).ready(function () {
                 "source": "polygon",
                 'layout': {},
                 'paint': {
-                    'fill-color': '#088',
+                    'fill-color': {
+                        property: 'sport-category',
+                        type: 'categorical',
+                        stops: [
+                            ['soccer', 'red'],
+                            ['fitness', 'green'],
+                            ['running', 'blue'],
+                            ['swimming', 'purple'],
+                            ['fightingsport', 'yellow'],
+                            ['cycling', 'orange'],
+                            ['gymnastics', 'cyan'],
+                            ['yoga', 'brown'],
+                            ['hockey', 'white'],
+                            ['bootcamp', 'pink']
+                        ]
+                    },
                     'fill-opacity': 0.8
                 }
             });

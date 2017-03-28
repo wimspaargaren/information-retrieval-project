@@ -58,7 +58,7 @@ func GetPolygons(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Printf("connection error: %v\n", err)
 	}
-	rows, errQ := db.Query("SELECT id, UNNEST(data_ids) FROM clusters")
+	rows, errQ := db.Query("SELECT id, UNNEST(data_ids),category FROM clusters WHERE cluster_set_id = 13")
 	if errQ != nil {
 		fmt.Printf("error: %v\n", err)
 	}
@@ -71,7 +71,8 @@ func GetPolygons(w http.ResponseWriter, r *http.Request) {
 	for rows.Next() {
 		var id int
 		var tweetID int
-		err = rows.Scan(&id, &tweetID)
+		var category string
+		err = rows.Scan(&id, &tweetID, &category)
 		if err != nil {
 			fmt.Println("this did not work", err)
 		}
@@ -81,6 +82,8 @@ func GetPolygons(w http.ResponseWriter, r *http.Request) {
 				var resp PolygonFeature
 				resp.Type = "Feature"
 				resp.Geometry.Type = "Polygon"
+				resp.Properties.Category = category
+				resp.Properties.ID = id
 				rows2, errQ := db.Query("SELECT lat, long FROM data WHERE " + test)
 				tempSlice := [][2]float64{}
 				if errQ != nil {
@@ -143,8 +146,14 @@ type PolyResponse struct {
 }
 
 type PolygonFeature struct {
-	Type     string                 `json:"type"`
-	Geometry PolygonCoordinatesList `json:"geometry"`
+	Type       string                 `json:"type"`
+	Geometry   PolygonCoordinatesList `json:"geometry"`
+	Properties PolyProp               `json:"properties"`
+}
+
+type PolyProp struct {
+	Category string `json:"sport-category"`
+	ID       int    `json:"id"`
 }
 
 type PolygonCoordinatesList struct {

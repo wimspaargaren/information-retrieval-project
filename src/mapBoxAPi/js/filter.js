@@ -70,16 +70,31 @@ function filterData() {
             "type": "geojson",
             "data": geojsonPoly
         });
-        map.addLayer({
-            "id": "polygon",
-            "type": "fill",
-            "source": "polygon",
-            'layout': {},
-            'paint': {
-                'fill-color': '#088',
-                'fill-opacity': 0.8
-            }
-        });
+            map.addLayer({
+                "id": "polygon",
+                "type": "fill",
+                "source": "polygon",
+                'layout': {},
+                'paint': {
+                    'fill-color': {
+                        property: 'sport-category',
+                        type: 'categorical',
+                        stops: [
+                            ['soccer', 'red'],
+                            ['fitness', 'green'],
+                            ['running', 'blue'],
+                            ['swimming', 'purple'],
+                            ['fightingsport', 'yellow'],
+                            ['cycling', 'orange'],
+                            ['gymnastics', 'cyan'],
+                            ['yoga', 'brown'],
+                            ['hockey', 'white'],
+                            ['bootcamp', 'pink']
+                        ]
+                    },
+                    'fill-opacity': 0.8
+                }
+            });
     }
 }
 
