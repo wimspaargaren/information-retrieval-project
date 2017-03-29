@@ -38,7 +38,43 @@ def getTweets() :
         globalTweetIdList.append(row[0])
         tweetList.append(row[2].rstrip("\r\n").lower())
     return tweetList
- 
+    
+class sportTweet():
+    def __init__(self,tweetID,category,bm_running,bm_gymnastics,bm_cycling,bm_bootcamp,bm_fightingsport,bm_yoga,bm_soccer,bm_fitness,bm_swimming):
+        print(tweetID)
+        self.category = category
+        self.bm_running = bm_running
+        self.bm_gymnastics = bm_gymnastics
+        self.bm_cycling = bm_cycling
+        self.bm_bootcamp = bm_bootcamp
+        self.bm_fightingsport = bm_fightingsport
+        self.bm_yoga = bm_yoga
+        self.bm_soccer = bm_soccer
+        self.bm_fitness = bm_fitness
+        self.bm_swimming = bm_swimming
+        self.tweetID = tweetID
+
+def getSportTweets() : 
+    print("Retrieving sport tweets: \n")
+    connString = "dbname='"+sys.argv[1]+"' user='"+sys.argv[2]+"' host='"+sys.argv[3]+"' password='"+sys.argv[4]+"' port='"+sys.argv[5]+"'"
+    try:
+        conn = psycopg2.connect(connString)
+    except:
+        print "I am unable to connect to the database"
+
+    cur = conn.cursor()
+    try:
+        cur.execute("""SELECT id, category, bm_running,bm_gymnastics, bm_cycling, bm_bootcamp, bm_fightingsport, bm_yoga,bm_soccer, bm_fitness, bm_swimming FROM data WHERE bm_running IS NOT NULL OR bm_gymnastics IS NOT NULL OR bm_cycling IS NOT NULL OR bm_bootcamp IS NOT NULL OR bm_fightingsport IS NOT NULL OR bm_yoga IS NOT NULL OR bm_soccer IS NOT NULL OR bm_fitness IS NOT NULL OR bm_swimming IS NOT NULL;""")
+    except:
+        print "I can't select from specified table!"
+
+    rows = cur.fetchall()
+
+    tweetList = []
+    for row in rows:
+        tweetList.append(sportTweet(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9],row[10]))
+
+    return tweetList
 
 def updateBmColumns(updateQuerys):
     connString = "dbname='"+sys.argv[1]+"' user='"+sys.argv[2]+"' host='"+sys.argv[3]+"' password='"+sys.argv[4]+"' port='"+sys.argv[5]+"'"
@@ -95,3 +131,39 @@ if __name__ == '__main__' :
         updateBmColumns(updateQueryList) 
 
     print("@TODO Update tweet categories")
+    updateSportCategories = []
+    sporTweets = getSportTweets();
+    for t in sporTweets:
+        maxval = 0.0
+        category = "undefined"
+        if t.bm_running > maxval :
+            maxval = t.bm_running
+            category = "running"
+        if t.bm_gymnastics > maxval :
+            maxval = t.bm_gymnastics
+            category = "gymnastics"
+        if t.bm_cycling > maxval :
+            maxval = t.bm_cycling
+            category = "cycling"
+        if t.bm_bootcamp > maxval :
+            maxval = t.bm_bootcamp
+            category = "bootcamp"
+        if t.bm_fightingsport > maxval :
+            maxval = t.bm_fightingsport
+            category = "fightingsport"
+        if t.bm_yoga > maxval :
+            maxval = t.bm_yoga
+            category = "yoga"
+        if t.bm_soccer > maxval :
+            maxval = t.bm_soccer
+            category = "soccer"
+        if t.bm_fitness > maxval :
+            maxval = t.bm_fitness
+            category = "fitness"
+        if t.bm_swimming > maxval :
+            maxval = t.bm_swimming
+            category = "swimming"
+        print(category)
+        updateSportCategories.append("UPDATE data SET category = '"+ category +"' WHERE id = " + str(t.tweetID))
+        
+    updateBmColumns(updateSportCategories)
