@@ -1,5 +1,5 @@
 # Mapbox initialization
 
-1. Adjust go password to correct one
-2. Run Go API
+1. Open bash and navigate to this folder
+2. Run: `go build && CONSTRING=< db-constring > ./mapBoxAPI.exe
 3. open index.html
