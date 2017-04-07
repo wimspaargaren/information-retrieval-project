@@ -67,7 +67,7 @@ func main() {
 	func getLeaderboards(seg *strava.SegmentExplorerSegment, cat string)	
 		db, err = sql.Open("postgres", "postgres://user:pass@86.87.235.82:8082/strava?sslmode=disable")
 		tx, err := db.Begin()
-		for _, segment := range datarunning1 {
+		for _, segment := range seg {
 			fmt.Printf("Fetching new leaderboard...\n")
 			results, err := strava.NewSegmentsService(client).GetLeaderboard(segment.Id).Do()
 			if err != nil {
