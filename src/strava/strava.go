@@ -48,42 +48,40 @@ func main() {
 	datariding3, err := strava.NewSegmentsService(client).Explore(latlow, lonleft, latmid, lonmid).ActivityType("biking").Do()
 	datarunning4, err := strava.NewSegmentsService(client).Explore(latlow, lonmid, latmid, lonright).ActivityType("running").Do()
 	datariding4, err := strava.NewSegmentsService(client).Explore(latlow, lonmid, latmid, lonright).ActivityType("biking").Do()
-	var list[8]strava.SegmentExplorerSegment = [datarunning1, datarunning2, datarunning3, datarunning4, datariding1, datariding2, datariding3, datariding4]
+	var list [8][]*strava.SegmentExplorerSegment
+	list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7] = datarunning1, datarunning2, datarunning3, datarunning4, datariding1, datariding2, datariding3, datariding4
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
 	var i int = 1
-	for_, element := range list {
+	var category string
+	for _, element := range list {
 		if i <= 4 {
-			getLeaderboards(element, "running")
+			category = "running"
+		} else {
+			category = "cycling"
 		}
-		else {
-			getLeaderboards(element, "cycling")
-		}
-		i+=1
-	}
-	
-	func getLeaderboards(seg *strava.SegmentExplorerSegment, cat string)	
 		db, err = sql.Open("postgres", "postgres://user:pass@86.87.235.82:8082/twitter?sslmode=disable")
 		tx, err := db.Begin()
-		for _, segment := range seg {
+		if err != nil {
+			fmt.Println(err)
+		}
+		for _, segment := range element {
 			fmt.Printf("Fetching new leaderboard...\n")
 			results, err := strava.NewSegmentsService(client).GetLeaderboard(segment.Id).Do()
 			if err != nil {
 				fmt.Println(err)
 				os.Exit(1)
 			}
-			var category, id = cat, segment.Id
 			var start[2]float64 = segment.StartLocation
 			//var end[2]float64 = segment.EndLocation
 			
 			for _, e := range results.Entries {
 				var name string = e.AthleteName
 				
-				var t time.Time	
+				var t time.Time	= e.StartDateLocal
 				var timeErr error
-				t, timeErr = time.Parse(time.RubyDate, e.StartDateLocal)
 				if timeErr != nil {
 					fmt.Println(timeErr)
 				}
@@ -109,5 +107,7 @@ func main() {
 				tx.Commit()
 			}
 		}
+		i+=1
 	}
+	fmt.Println("done")
 }
