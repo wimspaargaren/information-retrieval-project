@@ -65,7 +65,7 @@ func main() {
 	}
 	
 	func getLeaderboards(seg *strava.SegmentExplorerSegment, cat string)	
-		db, err = sql.Open("postgres", "postgres://user:pass@86.87.235.82:8082/strava?sslmode=disable")
+		db, err = sql.Open("postgres", "postgres://user:pass@86.87.235.82:8082/twitter?sslmode=disable")
 		tx, err := db.Begin()
 		for _, segment := range seg {
 			fmt.Printf("Fetching new leaderboard...\n")
@@ -101,7 +101,7 @@ func main() {
 				}
 				
 				var id int
-				dbErr := tx.QueryRow("INSERT INTO data (category, athlethe_name, lat, long, day, daypart) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id",
+				dbErr := tx.QueryRow("INSERT INTO strava (category, athlete_name, lat, long, day, daypart) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id",
 					category, name, start[0], start[1], day.String(), daypart).Scan(&id)
 				if dbErr != nil {
 					fmt.Println(dbErr)
