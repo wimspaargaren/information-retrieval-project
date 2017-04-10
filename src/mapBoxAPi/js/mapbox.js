@@ -12,12 +12,42 @@ $(document).ready(function () {
     })
 
     loadshp({
-        url: '/Downloads/voronoi.zip', // path or your upload file
+        url: 'http://localhost/voronoi.zip', // path or your upload file
         encoding: 'big5', // default utf-8
         EPSG: 3826 // default 4326
     }, function(geojson) {
         console.log(geojson)
-        // geojson returned
+         geojsonPoly = geojson;
+            map.addSource('polygon', {
+                "type": "geojson",
+                "data": geojsonPoly
+            });
+            map.addLayer({
+                "id": "polygon",
+                "type": "fill",
+                "source": "polygon",
+                'layout': {},
+                'paint': {
+                    'fill-color': {
+                        property: 'sport-category',
+                        type: 'categorical',
+                        stops: [
+                            ['soccer', 'red'],
+                            ['fitness', 'green'],
+                            ['running', 'blue'],
+                            ['swimming', 'purple'],
+                            ['fightingsport', 'yellow'],
+                            ['cycling', 'orange'],
+                            ['gymnastics', 'cyan'],
+                            ['yoga', 'brown'],
+                            ['hockey', 'white'],
+                            ['bootcamp', 'pink']
+                        ]
+                    },
+                    'fill-opacity': 0.8
+                }
+            });
+
     });
 
 
