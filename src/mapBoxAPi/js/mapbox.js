@@ -11,6 +11,15 @@ $(document).ready(function () {
         }
     })
 
+    loadshp({
+        url: '/Downloads/voronoi.zip', // path or your upload file
+        encoding: 'big5', // default utf-8
+        EPSG: 3826 // default 4326
+    }, function(geojson) {
+        console.log(geojson)
+        // geojson returned
+    });
+
 
     map = new mapboxgl.Map({
         container: 'map',
