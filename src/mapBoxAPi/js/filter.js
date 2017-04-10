@@ -1,4 +1,14 @@
 
+var colorBootcamp = "#EF6C78";
+var colorSoccer = "#FFFFEE"
+var colorFitness = "#DADDF2"
+var colorRunning = "#AABBDD"
+var colorSwimming = "#8888AA"
+var colorFighting = "#3F487F"
+var colorCycling = "#223399"
+var colorGymnastics = "#56141A" 
+var colorYoga = "#95222D"
+var colorHockey = "#D53140"
 
 var dayFilterVal = "0";
 var dayPartFilterVal = "0";
@@ -49,16 +59,16 @@ function filterData() {
                     property: 'sport-category',
                     type: 'categorical',
                     stops: [
-                        ['soccer', 'red'],
-                        ['fitness', 'green'],
-                        ['running', 'blue'],
-                        ['swimming', 'purple'],
-                        ['fightingsport', 'yellow'],
-                        ['cycling', 'orange'],
-                        ['gymnastics', 'cyan'],
-                        ['yoga', 'brown'],
-                        ['hockey', 'white'],
-                        ['bootcamp', 'pink']
+                        ['soccer', colorSoccer],
+                        ['fitness', colorFitness],
+                        ['running', colorRunning],
+                        ['swimming', colorSwimming],
+                        ['fightingsport', colorFighting],
+                        ['cycling', colorCycling],
+                        ['gymnastics', colorGymnastics],
+                        ['yoga', colorYoga],
+                        ['hockey', colorHockey],
+                        ['bootcamp', colorBootcamp]
                     ]
                 }
             }
@@ -77,19 +87,19 @@ function filterData() {
                 'layout': {},
                 'paint': {
                     'fill-color': {
-                        property: 'sport-category',
+                        property: 'category',
                         type: 'categorical',
                         stops: [
-                            ['soccer', 'red'],
-                            ['fitness', 'green'],
-                            ['running', 'blue'],
-                            ['swimming', 'purple'],
-                            ['fightingsport', 'yellow'],
-                            ['cycling', 'orange'],
-                            ['gymnastics', 'cyan'],
-                            ['yoga', 'brown'],
-                            ['hockey', 'white'],
-                            ['bootcamp', 'pink']
+                            ['soccer', colorSoccer],
+                            ['fitness', colorFitness],
+                            ['running', colorRunning],
+                            ['swimming', colorSwimming],
+                            ['fightingsport', colorFighting],
+                            ['cycling', colorCycling],
+                            ['gymnastics', colorGymnastics],
+                            ['yoga', colorYoga],
+                            ['hockey', colorHockey],
+                            ['bootcamp', colorBootcamp]
                         ]
                     },
                     'fill-opacity': 0.8
@@ -133,16 +143,16 @@ function filter() {
                 property: 'sport-category',
                 type: 'categorical',
                 stops: [
-                    ['soccer', 'red'],
-                    ['fitness', 'green'],
-                    ['running', 'blue'],
-                    ['swimming', 'purple'],
-                    ['fightingsport', 'yellow'],
-                    ['cycling', 'orange'],
-                    ['gymnastics', 'cyan'],
-                    ['yoga', 'brown'],
-                    ['hockey', 'white'],
-                    ['bootcamp', 'pink']
+                    ['soccer', colorSoccer],
+                    ['fitness', colorFitness],
+                    ['running', colorRunning],
+                    ['swimming', colorSwimming],
+                    ['fightingsport', colorFighting],
+                    ['cycling', colorCycling],
+                    ['gymnastics', colorGymnastics],
+                    ['yoga', colorYoga],
+                    ['hockey', colorHockey],
+                    ['bootcamp', colorBootcamp]
                 ]
             }
         }
@@ -228,16 +238,16 @@ function setDefaultLayer() {
                 property: 'sport-category',
                 type: 'categorical',
                 stops: [
-                    ['soccer', 'red'],
-                    ['fitness', 'green'],
-                    ['running', 'blue'],
-                    ['swimming', 'purple'],
-                    ['fightingsport', 'yellow'],
-                    ['cycling', 'orange'],
-                    ['gymnastics', 'cyan'],
-                    ['yoga', 'brown'],
-                    ['hockey', 'white'],
-                    ['bootcamp', 'pink']
+                    ['soccer', colorSoccer],
+                    ['fitness', colorFitness],
+                    ['running', colorRunning],
+                    ['swimming', colorSwimming],
+                    ['fightingsport', colorFighting],
+                    ['cycling', colorCycling],
+                    ['gymnastics', colorGymnastics],
+                    ['yoga', colorYoga],
+                    ['hockey', colorHockey],
+                    ['bootcamp', colorBootcamp]
                 ]
             }
         }
