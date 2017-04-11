@@ -14,7 +14,7 @@ import (
 func main() {
 	var accessToken string
 	var db *sql.DB
-	var lathigh, latmid, latlow, lonleft, lonmid, lonright float64 = 52.421035, 52.3721965, 52.323358, 4.743425, 4.887964, 5.032503
+	var lathigh, lathighmid, latmid, latmidlow, latlow, lonleft, lonleftmid, lonmid, lonmidright, lonright float64 =52.421035, 52.39661575, 52.3721965, 52.34777725, 52.323358, 4.743425, 4.8156945, 4.887964, 4.9602335, 5.032503
 
 
 	// Provide an access token, with write permissions.
@@ -32,25 +32,65 @@ func main() {
 	client := strava.NewClient(accessToken)
 	
 	//Quadrants of Amsterdam
-	//---------------------
-	//|	1 			|  2      |
-	//|         |         |
-	//---------------------
-	//| 3				|  4      |
-	//|         |         |
-	//---------------------
-	
+	//lonleft, lonleftmid, lonmid, lonmidright, lonright
+	//---------------------lathigh
+	//|	1 |	 2	|  3 |  4 |
+	//---------------------lathighmid
+	//| 5 |  6  |  7 |  8 |
+	//---------------------latmid
+	//| 9	|	10  | 11 | 12 |
+	//---------------------latmidlow
+	//|13 | 14  | 15 | 16 |
+	//---------------------latlow
 	fmt.Printf("Fetching segment info...\n")
-	datarunning1, err := strava.NewSegmentsService(client).Explore(latmid, lonleft, lathigh, lonmid).ActivityType("running").Do()
-	datariding1, err := strava.NewSegmentsService(client).Explore(latmid, lonleft, lathigh, lonmid).ActivityType("biking").Do()
-	datarunning2, err := strava.NewSegmentsService(client).Explore(latmid, lonmid, lathigh, lonright).ActivityType("running").Do()
-	datariding2, err := strava.NewSegmentsService(client).Explore(latmid, lonmid, lathigh, lonright).ActivityType("biking").Do()
-	datarunning3, err := strava.NewSegmentsService(client).Explore(latlow, lonleft, latmid, lonmid).ActivityType("running").Do()
-	datariding3, err := strava.NewSegmentsService(client).Explore(latlow, lonleft, latmid, lonmid).ActivityType("biking").Do()
-	datarunning4, err := strava.NewSegmentsService(client).Explore(latlow, lonmid, latmid, lonright).ActivityType("running").Do()
-	datariding4, err := strava.NewSegmentsService(client).Explore(latlow, lonmid, latmid, lonright).ActivityType("biking").Do()
-	var list [8][]*strava.SegmentExplorerSegment
-	list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7] = datarunning1, datarunning2, datarunning3, datarunning4, datariding1, datariding2, datariding3, datariding4
+	datarunning1, err := strava.NewSegmentsService(client).Explore(lathighmid, lonleft, lathigh, lonleftmid).ActivityType("running").Do()
+	datarunning2, err := strava.NewSegmentsService(client).Explore(lathighmid, lonleftmid, lathigh, lonmid).ActivityType("running").Do()
+	datarunning3, err := strava.NewSegmentsService(client).Explore(lathighmid, lonmid, lathigh, lonmidright).ActivityType("running").Do()
+	datarunning4, err := strava.NewSegmentsService(client).Explore(lathighmid, lonmidleft, lathigh, lonright).ActivityType("running").Do()
+	
+	datarunning5, err := strava.NewSegmentsService(client).Explore(latmid, lonleft, lathighmid, lonleftmid).ActivityType("running").Do()
+	datarunning6, err := strava.NewSegmentsService(client).Explore(latmid, lonleftmid, lathighmid, lonmid).ActivityType("running").Do()
+	datarunning7, err := strava.NewSegmentsService(client).Explore(latmid, lonmid, lathighmid, lonmidright).ActivityType("running").Do()
+	datarunning8, err := strava.NewSegmentsService(client).Explore(latmid, lonmidleft, lathighmid, lonright).ActivityType("running").Do()
+	
+	datarunning9, err := strava.NewSegmentsService(client).Explore(latmidlow, lonleft, latmid, lonleftmid).ActivityType("running").Do()
+	datarunning10, err := strava.NewSegmentsService(client).Explore(latmidlow, lonleftmid, latmid, lonmid).ActivityType("running").Do()
+	datarunning11, err := strava.NewSegmentsService(client).Explore(latmidlow, lonmid, latmid, lonmidright).ActivityType("running").Do()
+	datarunning12, err := strava.NewSegmentsService(client).Explore(latmidlow, lonmidleft, latmid, lonright).ActivityType("running").Do()
+	
+	datarunning13, err := strava.NewSegmentsService(client).Explore(latlow, lonleft, latmidlow, lonleftmid).ActivityType("running").Do()
+	datarunning14, err := strava.NewSegmentsService(client).Explore(latlow, lonleftmid, latmidlow, lonmid).ActivityType("running").Do()
+	datarunning15, err := strava.NewSegmentsService(client).Explore(latlow, lonmid, latmidlow, lonmidright).ActivityType("running").Do()
+	datarunning16, err := strava.NewSegmentsService(client).Explore(latlow, lonmidleft, latmidlow, lonright).ActivityType("running").Do()
+	
+	datariding1, err := strava.NewSegmentsService(client).Explore(lathighmid, lonleft, lathigh, lonleftmid).ActivityType("riding").Do()
+	datariding2, err := strava.NewSegmentsService(client).Explore(lathighmid, lonleftmid, lathigh, lonmid).ActivityType("riding").Do()
+	datariding3, err := strava.NewSegmentsService(client).Explore(lathighmid, lonmid, lathigh, lonmidright).ActivityType("riding").Do()
+	datariding4, err := strava.NewSegmentsService(client).Explore(lathighmid, lonmidleft, lathigh, lonright).ActivityType("riding").Do()
+	
+	datariding5, err := strava.NewSegmentsService(client).Explore(latmid, lonleft, lathighmid, lonleftmid).ActivityType("riding").Do()
+	datariding6, err := strava.NewSegmentsService(client).Explore(latmid, lonleftmid, lathighmid, lonmid).ActivityType("riding").Do()
+	datariding7, err := strava.NewSegmentsService(client).Explore(latmid, lonmid, lathighmid, lonmidright).ActivityType("riding").Do()
+	datariding8, err := strava.NewSegmentsService(client).Explore(latmid, lonmidleft, lathighmid, lonright).ActivityType("riding").Do()
+	
+	datariding9, err := strava.NewSegmentsService(client).Explore(latmidlow, lonleft, latmid, lonleftmid).ActivityType("riding").Do()
+	datariding10, err := strava.NewSegmentsService(client).Explore(latmidlow, lonleftmid, latmid, lonmid).ActivityType("riding").Do()
+	datariding11, err := strava.NewSegmentsService(client).Explore(latmidlow, lonmid, latmid, lonmidright).ActivityType("riding").Do()
+	datariding12, err := strava.NewSegmentsService(client).Explore(latmidlow, lonmidleft, latmid, lonright).ActivityType("riding").Do()
+	
+	datariding13, err := strava.NewSegmentsService(client).Explore(latlow, lonleft, latmidlow, lonleftmid).ActivityType("riding").Do()
+	datariding14, err := strava.NewSegmentsService(client).Explore(latlow, lonleftmid, latmidlow, lonmid).ActivityType("riding").Do()
+	datariding15, err := strava.NewSegmentsService(client).Explore(latlow, lonmid, latmidlow, lonmidright).ActivityType("riding").Do()
+	datariding16, err := strava.NewSegmentsService(client).Explore(latlow, lonmidleft, latmidlow, lonright).ActivityType("riding").Do()
+	
+	
+	var list [32][]*strava.SegmentExplorerSegment
+	list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7] = datarunning1, datarunning2, datarunning3, datarunning4, datarunning5, datarunning6, datarunning7, datarunning8
+	list[8], list[9], list[10], list[11], list[12], list[13], list[14], list[15] = datarunning9, datarunning10, datarunning11, datarunning12, datarunning13, datarunning14, datarunning15, datarunning16
+	list[16], list[17], list[18], list[19], list[20], list[21], list[22], list[23] = datariding1, datariding2, datariding3, datariding4, datariding5, datariding6, datariding7, datariding8
+	list[24], list[25], list[26], list[27], list[28], list[29], list[30], list[31] = datariding9, datariding10, datariding11, datariding12, datariding13, datariding14, datariding15, datariding16
+	
+	
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
