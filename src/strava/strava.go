@@ -42,47 +42,47 @@ func main() {
 	//---------------------latmidlow
 	//|13 | 14  | 15 | 16 |
 	//---------------------latlow
-	fmt.Printf("Fetching segment info...\n")
+	fmt.Printf("Fetching segment info 1/8\n")
 	datarunning1, err := strava.NewSegmentsService(client).Explore(lathighmid, lonleft, lathigh, lonleftmid).ActivityType("running").Do()
 	datarunning2, err := strava.NewSegmentsService(client).Explore(lathighmid, lonleftmid, lathigh, lonmid).ActivityType("running").Do()
 	datarunning3, err := strava.NewSegmentsService(client).Explore(lathighmid, lonmid, lathigh, lonmidright).ActivityType("running").Do()
 	datarunning4, err := strava.NewSegmentsService(client).Explore(lathighmid, lonmidleft, lathigh, lonright).ActivityType("running").Do()
-	
+	fmt.Printf("Fetching segment info 2/8\n")
 	datarunning5, err := strava.NewSegmentsService(client).Explore(latmid, lonleft, lathighmid, lonleftmid).ActivityType("running").Do()
 	datarunning6, err := strava.NewSegmentsService(client).Explore(latmid, lonleftmid, lathighmid, lonmid).ActivityType("running").Do()
 	datarunning7, err := strava.NewSegmentsService(client).Explore(latmid, lonmid, lathighmid, lonmidright).ActivityType("running").Do()
 	datarunning8, err := strava.NewSegmentsService(client).Explore(latmid, lonmidleft, lathighmid, lonright).ActivityType("running").Do()
-	
+	fmt.Printf("Fetching segment info 3/8\n")
 	datarunning9, err := strava.NewSegmentsService(client).Explore(latmidlow, lonleft, latmid, lonleftmid).ActivityType("running").Do()
 	datarunning10, err := strava.NewSegmentsService(client).Explore(latmidlow, lonleftmid, latmid, lonmid).ActivityType("running").Do()
 	datarunning11, err := strava.NewSegmentsService(client).Explore(latmidlow, lonmid, latmid, lonmidright).ActivityType("running").Do()
 	datarunning12, err := strava.NewSegmentsService(client).Explore(latmidlow, lonmidleft, latmid, lonright).ActivityType("running").Do()
-	
+	fmt.Printf("Fetching segment info 4/8\n")
 	datarunning13, err := strava.NewSegmentsService(client).Explore(latlow, lonleft, latmidlow, lonleftmid).ActivityType("running").Do()
 	datarunning14, err := strava.NewSegmentsService(client).Explore(latlow, lonleftmid, latmidlow, lonmid).ActivityType("running").Do()
 	datarunning15, err := strava.NewSegmentsService(client).Explore(latlow, lonmid, latmidlow, lonmidright).ActivityType("running").Do()
 	datarunning16, err := strava.NewSegmentsService(client).Explore(latlow, lonmidleft, latmidlow, lonright).ActivityType("running").Do()
-	
+	fmt.Printf("Fetching segment info 5/8\n")
 	datariding1, err := strava.NewSegmentsService(client).Explore(lathighmid, lonleft, lathigh, lonleftmid).ActivityType("riding").Do()
 	datariding2, err := strava.NewSegmentsService(client).Explore(lathighmid, lonleftmid, lathigh, lonmid).ActivityType("riding").Do()
 	datariding3, err := strava.NewSegmentsService(client).Explore(lathighmid, lonmid, lathigh, lonmidright).ActivityType("riding").Do()
 	datariding4, err := strava.NewSegmentsService(client).Explore(lathighmid, lonmidleft, lathigh, lonright).ActivityType("riding").Do()
-	
+	fmt.Printf("Fetching segment info 6/8\n")
 	datariding5, err := strava.NewSegmentsService(client).Explore(latmid, lonleft, lathighmid, lonleftmid).ActivityType("riding").Do()
 	datariding6, err := strava.NewSegmentsService(client).Explore(latmid, lonleftmid, lathighmid, lonmid).ActivityType("riding").Do()
 	datariding7, err := strava.NewSegmentsService(client).Explore(latmid, lonmid, lathighmid, lonmidright).ActivityType("riding").Do()
 	datariding8, err := strava.NewSegmentsService(client).Explore(latmid, lonmidleft, lathighmid, lonright).ActivityType("riding").Do()
-	
+	fmt.Printf("Fetching segment info 7/8\n")
 	datariding9, err := strava.NewSegmentsService(client).Explore(latmidlow, lonleft, latmid, lonleftmid).ActivityType("riding").Do()
 	datariding10, err := strava.NewSegmentsService(client).Explore(latmidlow, lonleftmid, latmid, lonmid).ActivityType("riding").Do()
 	datariding11, err := strava.NewSegmentsService(client).Explore(latmidlow, lonmid, latmid, lonmidright).ActivityType("riding").Do()
 	datariding12, err := strava.NewSegmentsService(client).Explore(latmidlow, lonmidleft, latmid, lonright).ActivityType("riding").Do()
-	
+	fmt.Printf("Fetching segment info 8/8\n")
 	datariding13, err := strava.NewSegmentsService(client).Explore(latlow, lonleft, latmidlow, lonleftmid).ActivityType("riding").Do()
 	datariding14, err := strava.NewSegmentsService(client).Explore(latlow, lonleftmid, latmidlow, lonmid).ActivityType("riding").Do()
 	datariding15, err := strava.NewSegmentsService(client).Explore(latlow, lonmid, latmidlow, lonmidright).ActivityType("riding").Do()
 	datariding16, err := strava.NewSegmentsService(client).Explore(latlow, lonmidleft, latmidlow, lonright).ActivityType("riding").Do()
-	
+	fmt.Printf("Done fetching segment info\n")
 	
 	var list [32][]*strava.SegmentExplorerSegment
 	list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7] = datarunning1, datarunning2, datarunning3, datarunning4, datarunning5, datarunning6, datarunning7, datarunning8
@@ -98,7 +98,7 @@ func main() {
 	var i int = 1
 	var category string
 	for _, element := range list {
-		if i <= 4 {
+		if i <= 16 {
 			category = "running"
 		} else {
 			category = "cycling"
@@ -106,7 +106,7 @@ func main() {
 		db, err = sql.Open("postgres", "postgres://user:pass@86.87.235.82:8082/twitter?sslmode=disable")
 		
 		for _, segment := range element {
-			fmt.Printf("Fetching new leaderboard...\n")
+			fmt.Printf("Fetching new leaderboard... %d \n", i)
 			results, err := strava.NewSegmentsService(client).GetLeaderboard(segment.Id).Do()
 			if err != nil {
 				fmt.Println(err)
