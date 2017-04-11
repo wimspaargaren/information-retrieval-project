@@ -14,6 +14,7 @@ var colorCycling = "#223399"
 var colorGymnastics = "#56141A"
 var colorYoga = "#95222D"
 var colorHockey = "#D53140"
+var colorDancing = "#FBDC65"
 
 $(document).ready(function () {
     $('#showlegend').on('change', function (event) {
@@ -94,7 +95,8 @@ $(document).ready(function () {
                             ['gymnastics', colorGymnastics],
                             ['yoga', colorYoga],
                             ['hockey', colorHockey],
-                            ['bootcamp', colorBootcamp]
+                            ['bootcamp', colorBootcamp],
+                            ['dancing', colorDancing]
                         ]
                     },
                     'fill-opacity': 0.8
@@ -122,8 +124,8 @@ $(document).ready(function () {
     map.on('load', function () {
 
         map.getCanvas().style.cursor = 'default';
-        var layers = ['Soccer', 'Fitness', 'Running', 'Swimming', 'Fighting Sport', 'Cycling', 'Gymnastics', 'Yoga', 'Hockey', 'Bootcamp'];
-        var colors = [colorSoccer, colorFitness, colorRunning, colorSwimming, colorFighting, colorCycling, colorGymnastics, colorYoga, colorHockey, colorBootcamp];
+        var layers = ['Soccer', 'Fitness', 'Running', 'Swimming', 'Fighting Sport', 'Cycling', 'Gymnastics', 'Yoga', 'Hockey', 'Bootcamp','Dancing'];
+        var colors = [colorSoccer, colorFitness, colorRunning, colorSwimming, colorFighting, colorCycling, colorGymnastics, colorYoga, colorHockey, colorBootcamp,colorDancing];
         for (i = 0; i < layers.length; i++) {
             var color = colors[i];
             var item = document.createElement('div');

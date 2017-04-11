@@ -6,9 +6,10 @@ var colorRunning = "#AABBDD"
 var colorSwimming = "#8888AA"
 var colorFighting = "#3F487F"
 var colorCycling = "#223399"
-var colorGymnastics = "#56141A" 
+var colorGymnastics = "#56141A"
 var colorYoga = "#95222D"
 var colorHockey = "#D53140"
+var colorDancing = "#FBDC65"
 
 var dayFilterVal = "0";
 var dayPartFilterVal = "0";
@@ -68,7 +69,8 @@ function filterData() {
                         ['gymnastics', colorGymnastics],
                         ['yoga', colorYoga],
                         ['hockey', colorHockey],
-                        ['bootcamp', colorBootcamp]
+                        ['bootcamp', colorBootcamp], 
+                        ['dancing', colorDancing]
                     ]
                 }
             }
@@ -80,31 +82,32 @@ function filterData() {
             "type": "geojson",
             "data": geojsonPoly
         });
-            map.addLayer({
-                "id": "polygon",
-                "type": "fill",
-                "source": "polygon",
-                'layout': {},
-                'paint': {
-                    'fill-color': {
-                        property: 'category',
-                        type: 'categorical',
-                        stops: [
-                            ['soccer', colorSoccer],
-                            ['fitness', colorFitness],
-                            ['running', colorRunning],
-                            ['swimming', colorSwimming],
-                            ['fightingsport', colorFighting],
-                            ['cycling', colorCycling],
-                            ['gymnastics', colorGymnastics],
-                            ['yoga', colorYoga],
-                            ['hockey', colorHockey],
-                            ['bootcamp', colorBootcamp]
-                        ]
-                    },
-                    'fill-opacity': 0.8
-                }
-            });
+        map.addLayer({
+            "id": "polygon",
+            "type": "fill",
+            "source": "polygon",
+            'layout': {},
+            'paint': {
+                'fill-color': {
+                    property: 'category',
+                    type: 'categorical',
+                    stops: [
+                        ['soccer', colorSoccer],
+                        ['fitness', colorFitness],
+                        ['running', colorRunning],
+                        ['swimming', colorSwimming],
+                        ['fightingsport', colorFighting],
+                        ['cycling', colorCycling],
+                        ['gymnastics', colorGymnastics],
+                        ['yoga', colorYoga],
+                        ['hockey', colorHockey],
+                        ['bootcamp', colorBootcamp], 
+                        ['dancing', colorDancing]
+                    ]
+                },
+                'fill-opacity': 0.8
+            }
+        });
     }
 }
 
@@ -152,7 +155,8 @@ function filter() {
                     ['gymnastics', colorGymnastics],
                     ['yoga', colorYoga],
                     ['hockey', colorHockey],
-                    ['bootcamp', colorBootcamp]
+                    ['bootcamp', colorBootcamp], 
+                    ['dancing', colorDancing]
                 ]
             }
         }
@@ -247,7 +251,8 @@ function setDefaultLayer() {
                     ['gymnastics', colorGymnastics],
                     ['yoga', colorYoga],
                     ['hockey', colorHockey],
-                    ['bootcamp', colorBootcamp]
+                    ['bootcamp', colorBootcamp], 
+                    ['dancing', colorDancing]
                 ]
             }
         }
