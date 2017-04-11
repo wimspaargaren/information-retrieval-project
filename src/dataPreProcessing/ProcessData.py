@@ -40,8 +40,7 @@ def getTweets() :
     return tweetList
     
 class sportTweet():
-    def __init__(self,tweetID,category,bm_running,bm_gymnastics,bm_cycling,bm_bootcamp,bm_fightingsport,bm_yoga,bm_soccer,bm_fitness,bm_swimming,bm_dancing):
-        print(tweetID)
+    def __init__(self,tweetID,category,bm_running,bm_gymnastics,bm_cycling,bm_bootcamp,bm_fightingsport,bm_yoga,bm_soccer,bm_fitness,bm_swimming,bm_dancing,bm_hockey):
         self.category = category
         self.bm_running = bm_running
         self.bm_gymnastics = bm_gymnastics
@@ -54,6 +53,7 @@ class sportTweet():
         self.bm_swimming = bm_swimming
         self.bm_dancing = bm_dancing
         self.tweetID = tweetID
+        self.bm_hockey = bm_hockey
 
 def getSportTweets() : 
     print("Retrieving sport tweets: \n")
@@ -65,7 +65,7 @@ def getSportTweets() :
 
     cur = conn.cursor()
     try:
-        cur.execute("""SELECT id, category, bm_running,bm_gymnastics, bm_cycling, bm_bootcamp, bm_fightingsport, bm_yoga,bm_soccer, bm_fitness, bm_swimming, bm_dancing FROM data WHERE bm_running IS NOT NULL OR bm_gymnastics IS NOT NULL OR bm_cycling IS NOT NULL OR bm_bootcamp IS NOT NULL OR bm_fightingsport IS NOT NULL OR bm_yoga IS NOT NULL OR bm_soccer IS NOT NULL OR bm_fitness IS NOT NULL OR bm_swimming IS NOT NULL;""")
+        cur.execute("""SELECT id, category, bm_running,bm_gymnastics, bm_cycling, bm_bootcamp, bm_fightingsport, bm_yoga,bm_soccer, bm_fitness, bm_swimming, bm_dancing,bm_hockey FROM data WHERE bm_running IS NOT NULL OR bm_gymnastics IS NOT NULL OR bm_cycling IS NOT NULL OR bm_bootcamp IS NOT NULL OR bm_fightingsport IS NOT NULL OR bm_yoga IS NOT NULL OR bm_soccer IS NOT NULL OR bm_fitness IS NOT NULL OR bm_swimming IS NOT NULL OR bm_dancing IS NOT NULL OR bm_hockey IS NOT NULL;""")
     except:
         print "I can't select from specified table!"
 
@@ -73,7 +73,7 @@ def getSportTweets() :
 
     tweetList = []
     for row in rows:
-        tweetList.append(sportTweet(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9],row[10],row[11]))
+        tweetList.append(sportTweet(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9],row[10],row[11],row[12]))
 
     return tweetList
 
@@ -83,7 +83,6 @@ def resetCatgories() :
 
 def updateBmColumns(updateQuerys):
     connString = "dbname='"+sys.argv[1]+"' user='"+sys.argv[2]+"' host='"+sys.argv[3]+"' password='"+sys.argv[4]+"' port='"+sys.argv[5]+"'"
-    #updateQuery = "UPDATE data SET category = '"+ category +"' WHERE id IN ("+idUpdateSTring+")"
     try:
         conn = psycopg2.connect(connString)
     except:
@@ -127,7 +126,12 @@ if __name__ == '__main__' :
         scoresCounter = 0
         for score in scores:
             if score != 0 :
-                print("id: ", globalTweetIdList[counter], "score: ", score)
+                if q.category == "gymnastics"  :
+                    print("UPDATE data SET " + column + " = "+ str(score) +" WHERE id = "+ str(globalTweetIdList[counter]))
+                
+                if q.category == "fitness" :  
+                    print("UPDATE data SET " + column + " = "+ str(score) +" WHERE id = "+ str(globalTweetIdList[counter]))
+
                 updateQueryList.append("UPDATE data SET " + column + " = "+ str(score) +" WHERE id = "+ str(globalTweetIdList[counter]))
                 scoresCounter = scoresCounter + 1
             counter = counter + 1
@@ -171,7 +175,9 @@ if __name__ == '__main__' :
         if t.bm_dancing > maxval :
             maxval = t.bm_dancing
             category = "dancing"
-        print(category)
+        if t.bm_hockey > maxval :
+            maxval = t.bm_hockey
+            category = "hockey"
         updateSportCategories.append("UPDATE data SET category = '"+ category +"' WHERE id = " + str(t.tweetID))
         
     updateBmColumns(updateSportCategories)
