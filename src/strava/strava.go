@@ -7,6 +7,7 @@ import (
 	"time"
 	"github.com/strava/go.strava"
 	sql "database/sql"
+	_ "github.com/lib/pq"
 )
 
 
@@ -63,10 +64,7 @@ func main() {
 			category = "cycling"
 		}
 		db, err = sql.Open("postgres", "postgres://user:pass@86.87.235.82:8082/twitter?sslmode=disable")
-		tx, err := db.Begin()
-		if err != nil {
-			fmt.Println(err)
-		}
+		
 		for _, segment := range element {
 			fmt.Printf("Fetching new leaderboard...\n")
 			results, err := strava.NewSegmentsService(client).GetLeaderboard(segment.Id).Do()
@@ -97,7 +95,10 @@ func main() {
 				} else {
 					daypart = "Evening"
 				}
-				
+				tx, err := db.Begin()
+				if err != nil {
+					fmt.Println(err)
+				}
 				var id int
 				dbErr := tx.QueryRow("INSERT INTO strava (category, athlete_name, lat, long, day, daypart) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id",
 					category, name, start[0], start[1], day.String(), daypart).Scan(&id)
