@@ -144,8 +144,10 @@ $(document).ready(function () {
     getPolygons();
     getPoints();
 
-    map.on('load', function () {
+    var slider = document.getElementById('slider');
+    var sliderValue = document.getElementById('slider-value');
 
+    map.on('load', function () {
         map.getCanvas().style.cursor = 'default';
         var layers = ['Soccer', 'Fitness', 'Running', 'Swimming', 'Fighting Sport', 'Cycling', 'Gymnastics', 'Yoga', 'Hockey', 'Bootcamp','Dancing'];
         var colors = [colorSoccer, colorFitness, colorRunning, colorSwimming, colorFighting, colorCycling, colorGymnastics, colorYoga, colorHockey, colorBootcamp,colorDancing];
@@ -162,6 +164,11 @@ $(document).ready(function () {
             item.appendChild(value);
             $("#pd")[0].appendChild(item);
         }
+
+        slider.addEventListener('input', function(e) {
+            map.setPaintProperty('polygon', 'fill-opacity', parseInt(e.target.value, 10) / 100);
+            sliderValue.textContent = e.target.value + '%';
+        });
     });
 });
 
