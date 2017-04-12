@@ -34,7 +34,7 @@ $(document).ready(function () {
 
     function getPolygons() {
         loadshp({
-            url: 'http://localhost/voronoi.zip', // path or your upload file
+            url: 'http://localhost:8080/voronoi', // path or your upload file
             encoding: 'big5', // default utf-8
             EPSG: 3826 // default 4326
         }, function (geojson) {
@@ -51,42 +51,43 @@ $(document).ready(function () {
                     for(var id of cluster.ids) {
                         for(var f of geojsonPoly.features) {
                             if(f.properties.field_1 == id) {
+                                f.properties.category = cluster.category;
                                 // TODO: SET CATEGORY VAN CLUSTER, DEZE STAAT NU NIET IN DB
                             }
                         }
                     }
                 }
 
-                // TODO: DIT MOET UITEINDELIJK WEG
-                for (var f of geojsonPoly.features) {
-                    if (f.properties.field_4 != "None") {
-                        f.properties.category = "running";
-                    }
-                    if (f.properties.field_5 != "None") {
-                        f.properties.category = "gymnastics";
-                    }
-                    if (f.properties.field_6 != "None") {
-                        f.properties.category = "cycling";
-                    }
-                    if (f.properties.field_7 != "None") {
-                        f.properties.category = "bootcamp";
-                    }
-                    if (f.properties.field_8 != "None") {
-                        f.properties.category = "fightingsport";
-                    }
-                    if (f.properties.field_9 != "None") {
-                        f.properties.category = "yoga";
-                    }
-                    if (f.properties.field_10 != "None") {
-                        f.properties.category = "soccer";
-                    }
-                    if (f.properties.field_11 != "None") {
-                        f.properties.category = "fitness";
-                    }
-                    if (f.properties.field_12 != "None") {
-                        f.properties.category = "swimming";
-                    }
-                }
+                // // TODO: DIT MOET UITEINDELIJK WEG
+                // for (var f of geojsonPoly.features) {
+                //     if (f.properties.field_4 != "None") {
+                //         f.properties.category = "running";
+                //     }
+                //     if (f.properties.field_5 != "None") {
+                //         f.properties.category = "gymnastics";
+                //     }
+                //     if (f.properties.field_6 != "None") {
+                //         f.properties.category = "cycling";
+                //     }
+                //     if (f.properties.field_7 != "None") {
+                //         f.properties.category = "bootcamp";
+                //     }
+                //     if (f.properties.field_8 != "None") {
+                //         f.properties.category = "fightingsport";
+                //     }
+                //     if (f.properties.field_9 != "None") {
+                //         f.properties.category = "yoga";
+                //     }
+                //     if (f.properties.field_10 != "None") {
+                //         f.properties.category = "soccer";
+                //     }
+                //     if (f.properties.field_11 != "None") {
+                //         f.properties.category = "fitness";
+                //     }
+                //     if (f.properties.field_12 != "None") {
+                //         f.properties.category = "swimming";
+                //     }
+                // }
 
                 map.addSource('polygon', {
                     "type": "geojson",

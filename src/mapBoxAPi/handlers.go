@@ -66,7 +66,7 @@ func GetPolygons(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Printf("connection error: %v\n", err)
 	}
-	rows, errQ := db.Query("SELECT id, unnest(data_ids) FROM clusters WHERE cluster_set_id = 14")
+	rows, errQ := db.Query("SELECT id, unnest(data_ids), category FROM clusters WHERE cluster_set_id = 15")
 	if errQ != nil {
 		fmt.Printf("error: %v\n", err)
 	}
@@ -78,7 +78,8 @@ func GetPolygons(w http.ResponseWriter, r *http.Request) {
 	for rows.Next() {
 		var id int
 		var tweetID int
-		err = rows.Scan(&id, &tweetID)
+		var category string
+		err = rows.Scan(&id, &tweetID, &category)
 		if err != nil {
 			fmt.Println("this did not work", err)
 		}
@@ -86,6 +87,7 @@ func GetPolygons(w http.ResponseWriter, r *http.Request) {
 		if id != idTemp {
 			var c Cluster
 			c.IDs = append(c.IDs, tweetID)
+			c.Category = category
 			result.Clusters = append(result.Clusters, c)
 		} else {
 			last := len(result.Clusters) - 1
