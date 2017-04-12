@@ -49,6 +49,44 @@ func GetPoints(w http.ResponseWriter, r *http.Request) {
 	render.JSON(w, http.StatusOK, result)
 }
 
+//GetPoints retrieves all points.
+func GetStravaPoints(w http.ResponseWriter, r *http.Request) {
+	var err error
+	db, err = sql.Open("postgres", constring)
+	if err != nil {
+		fmt.Printf("errorrr: %v\n", err)
+	}
+	rows, errQ := db.Query("SELECT lat,long,category, day, daypart FROM strava")
+	if errQ != nil {
+		fmt.Printf("error: %v\n", err)
+	}
+	var result Response
+	result.Type = "FeatureCollection"
+	for rows.Next() {
+		var resp Features
+		var lat float64
+		var long float64
+		var category string
+		var day string
+		var daypart string
+		err = rows.Scan(&lat, &long, &category, &day, &daypart)
+		if err != nil {
+			fmt.Println("this did not work", err)
+		}
+		resp.Type = "Feature"
+		resp.Geometry.Type = "Point"
+		resp.Geometry.Coordinates[0] = long
+		resp.Geometry.Coordinates[1] = lat
+		resp.Properties.Category = category
+		resp.Properties.Day = day
+		resp.Properties.Daypart = daypart
+		result.Features = append(result.Features, resp)
+	}
+
+	render := render.New()
+	render.JSON(w, http.StatusOK, result)
+}
+
 type polyFullResponse struct {
 	Clusters []Cluster `json:"clusters"`
 }

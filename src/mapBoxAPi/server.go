@@ -36,6 +36,7 @@ func main() {
 	mux.HandleFunc("/getpoints", GetPoints).Methods("GET")
 	mux.HandleFunc("/getpolygons", GetPolygons).Methods("GET")
 	mux.HandleFunc("/getpolygonsstrava", GetPolygonsStrava).Methods("GET")
+	mux.HandleFunc("/getstravapoints", GetStravaPoints).Methods("GET")
 
 	mux.HandleFunc("/voronoi", getFile).Methods("GET")
 	mux.HandleFunc("/voronoistrava", getFileStrava).Methods("GET")
