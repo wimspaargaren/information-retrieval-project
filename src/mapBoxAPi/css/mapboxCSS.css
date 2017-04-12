@@ -61,3 +61,23 @@ body {
     float: right;
     margin-right: 5%;
 }
+
+.slidercontainer{
+    float: right;
+    width: 200px;
+    margin-right: 5%;
+}
+
+.labelslidercontainer{
+    float:right;
+    width: 150px;
+}
+
+#slider{
+    margin-top:10px;
+}
+
+#slider-label{
+    margin-top:10px;
+    font-weight: 400;
+}
