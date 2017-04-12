@@ -35,8 +35,10 @@ func main() {
 	// Routes
 	mux.HandleFunc("/getpoints", GetPoints).Methods("GET")
 	mux.HandleFunc("/getpolygons", GetPolygons).Methods("GET")
+	mux.HandleFunc("/getpolygonsstrava", GetPolygonsStrava).Methods("GET")
 
 	mux.HandleFunc("/voronoi", getFile).Methods("GET")
+	mux.HandleFunc("/voronoistrava", getFileStrava).Methods("GET")
 	open.Start("index.html")
 
 	n := negroni.Classic()
@@ -48,4 +50,8 @@ func main() {
 
 func getFile(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "shapefile.zip")
+}
+
+func getFileStrava(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "strava.zip")
 }

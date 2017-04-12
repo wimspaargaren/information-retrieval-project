@@ -175,6 +175,74 @@ function filter() {
     });
 }
 
+function setStravaLayer() {
+
+     loadshp({
+            url: 'http://localhost:8080/voronoistrava', // path or your upload file
+            encoding: 'big5', // default utf-8
+            EPSG: 3826 // default 4326
+        }, function (geojson) {
+
+            var requestPolygons = $.ajax({
+                url: "http://localhost:8080/getpolygonsstrava",
+                method: "GET",
+                dataType: "json"
+            });
+            requestPolygons.done(function (msg) {
+                console.log(msg);
+                for(var cluster of msg.clusters) {
+                    for(var id of cluster.ids) {
+                        for(var f of geojson.features) {
+                            if(f.properties.field_1 == id) {
+                                f.properties.category = cluster.category;
+                                // TODO: SET CATEGORY VAN CLUSTER, DEZE STAAT NU NIET IN DB
+                            }
+                        }
+                    }
+                }
+
+                // map.removeSource("point");
+                // map.removeLayer("point");
+                map.removeSource("polygon");
+                map.removeLayer("polygon");
+                map.addSource('polygon', {
+                    "type": "geojson",
+                    "data": geojson
+                });
+                map.addLayer({
+                    "id": "polygon",
+                    "type": "fill",
+                    "source": "polygon",
+                    'layout': {},
+                    'paint': {
+                        'fill-color': {
+                            property: 'category',
+                            type: 'categorical',
+                            stops: [
+                                ['soccer', colorSoccer],
+                                ['fitness', colorFitness],
+                                ['running', colorRunning],
+                                ['swimming', colorSwimming],
+                                ['fightingsport', colorFighting],
+                                ['cycling', colorCycling],
+                                ['gymnastics', colorGymnastics],
+                                ['yoga', colorYoga],
+                                ['hockey', colorHockey],
+                                ['bootcamp', colorBootcamp], 
+                                ['dancing', colorDancing]
+                            ]
+                        },
+                        'fill-opacity': 0.5
+                    }
+                });
+
+            });
+            requestPolygons.fail(function (jqXHR, textStatus) {
+                alert(textStatus);
+            });
+        });
+}
+
 function filterOnDay(number) {
     if (number == 0) {
         setDefaultLayer();
