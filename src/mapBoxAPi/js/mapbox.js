@@ -5,6 +5,21 @@ var geojson;
 var geojsonPoly;
 
 $(document).ready(function () {
+    // to hide the different options based on the selection neighbourhoods/points
+    $('#dataRepresentationSelect').on('change', function(event) {
+        // points
+        if (event.target.value == 1) {
+            $("#dayfilter-div")[0].style.display = "block";
+            $("#daypartfilter-div")[0].style.display = "block";
+            $("#slider-div")[0].style.display = "none";
+        } else {
+            $("#dayfilter-div")[0].style.display = "none";
+            $("#daypartfilter-div")[0].style.display = "none";
+            $("#slider-div")[0].style.display = "block";
+        }
+    })
+    
+    
     $('#showlegend').on('change', function (event) {
         if (event.target.checked) {
             $("#features")[0].style.display = "block";
@@ -160,8 +175,3 @@ $(document).ready(function () {
         });
     });
 });
-
-
-
-
-
