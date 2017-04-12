@@ -99,19 +99,22 @@
             <div class="checkbox">
                 <label><input id="showlegend" type="checkbox" checked="checked" value="">Show legend</label>
             </div>
-            <div class="slidercontainer">
-                <input id='slider' type='range' min='0' max='100' step='0' value='50' />
-            </div>
-            <div class="labelslidercontainer">
-                <label id="slider-label">Layer opacity: <span id='slider-value'>50%</span></label>
+            <div id="slider-div">
+                <div class="slidercontainer">
+                    <input id='slider' type='range' min='0' max='100' step='0' value='50' />
+                </div>
+                <div class="labelslidercontainer">
+                    <label id="slider-label">Layer opacity: <span id='slider-value'>50%</span></label>
+                </div>
             </div>
         </div>
-
-        <div class="col-sm-12">
-            <div id='map'></div>
-            <div class='map-overlay' id='features'>
-                <h2>Categories</h2>
-                <div id='pd'></div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div id='map'></div>
+                <div class='map-overlay' id='features'>
+                    <h2>Categories</h2>
+                    <div id='pd'></div>
+                </div>
             </div>
         </div>
     </div>
