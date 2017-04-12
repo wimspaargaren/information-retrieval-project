@@ -8,6 +8,7 @@ import (
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
+	"github.com/skratchdot/open-golang/open"
 	"github.com/unrolled/render"
 )
 
@@ -36,6 +37,7 @@ func main() {
 	mux.HandleFunc("/getpolygons", GetPolygons).Methods("GET")
 
 	mux.HandleFunc("/voronoi", getFile).Methods("GET")
+	open.Start("index.html")
 
 	n := negroni.Classic()
 	n.Use(c)
