@@ -4,18 +4,6 @@ var map;
 var geojson;
 var geojsonPoly;
 
-var colorBootcamp = "#EF6C78";
-var colorSoccer = "#FFFFEE"
-var colorFitness = "#DADDF2"
-var colorRunning = "#AABBDD"
-var colorSwimming = "#8888AA"
-var colorFighting = "#3F487F"
-var colorCycling = "#223399"
-var colorGymnastics = "#56141A"
-var colorYoga = "#95222D"
-var colorHockey = "#D53140"
-var colorDancing = "#FBDC65"
-
 $(document).ready(function () {
     $('#showlegend').on('change', function (event) {
         if (event.target.checked) {
@@ -155,6 +143,7 @@ $(document).ready(function () {
             var key = document.createElement('span');
             key.className = 'legend-key';
             key.style.backgroundColor = color;
+            key.style.opacity = 0.5;
 
             var value = document.createElement('span');
             value.innerHTML = layers[i];

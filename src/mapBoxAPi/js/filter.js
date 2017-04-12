@@ -1,4 +1,16 @@
 
+// var colorBootcamp = "#042037";
+// var colorSoccer = "#496D89"
+// var colorFitness = "#114800"
+// var colorRunning = "#A1D890"
+// var colorSwimming = "#554600"
+// var colorFighting = "#D4C26A"
+// var colorCycling = "#551800"
+// var colorGymnastics = "#D4886A"
+// var colorYoga = "#95222D"
+// var colorHockey = "#D53140"
+// var colorDancing = "#FBDC65"
+
 var colorBootcamp = "#EF6C78";
 var colorSoccer = "#FFFFEE"
 var colorFitness = "#DADDF2"
