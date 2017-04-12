@@ -4,7 +4,7 @@ body {
        overflow:hidden;
 }
 #map { 
-    position:absolute; top:0; bottom:0; 
+    position:absolute; top:5%; bottom:0; 
     width:100%;
     height:100vh;
 }
@@ -41,7 +41,7 @@ body {
 
 #features {
   top: 0;
-  height: 280px;
+  height: 300px;
   margin-top: 80px;
   padding-left: 10px;
   margin-right: 10%;
@@ -60,4 +60,24 @@ body {
 .checkbox{
     float: right;
     margin-right: 5%;
+}
+
+.slidercontainer{
+    float: right;
+    width: 200px;
+    margin-right: 5%;
+}
+
+.labelslidercontainer{
+    float:right;
+    width: 150px;
+}
+
+#slider{
+    margin-top:10px;
+}
+
+#slider-label{
+    margin-top:10px;
+    font-weight: 400;
 }

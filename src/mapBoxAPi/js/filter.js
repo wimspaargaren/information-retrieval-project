@@ -1,9 +1,35 @@
 
+// var colorBootcamp = "#042037";
+// var colorSoccer = "#496D89"
+// var colorFitness = "#114800"
+// var colorRunning = "#A1D890"
+// var colorSwimming = "#554600"
+// var colorFighting = "#D4C26A"
+// var colorCycling = "#551800"
+// var colorGymnastics = "#D4886A"
+// var colorYoga = "#95222D"
+// var colorHockey = "#D53140"
+// var colorDancing = "#FBDC65"
+
+var colorBootcamp = "#EF6C78";
+var colorSoccer = "#FFFFEE"
+var colorFitness = "#DADDF2"
+var colorRunning = "#AABBDD"
+var colorSwimming = "#8888AA"
+var colorFighting = "#3F487F"
+var colorCycling = "#223399"
+var colorGymnastics = "#56141A"
+var colorYoga = "#95222D"
+var colorHockey = "#D53140"
+var colorDancing = "#FBDC65"
 
 var dayFilterVal = "0";
 var dayPartFilterVal = "0";
 var dataFilterVal = "0";
 var pointOrHood = "point";
+
+var geojson;
+var geojsonPoly;
 
 $(document).ready(function () {
     $('#dayfilter').on('change', function (event) {
@@ -49,16 +75,17 @@ function filterData() {
                     property: 'sport-category',
                     type: 'categorical',
                     stops: [
-                        ['soccer', 'red'],
-                        ['fitness', 'green'],
-                        ['running', 'blue'],
-                        ['swimming', 'purple'],
-                        ['fightingsport', 'yellow'],
-                        ['cycling', 'orange'],
-                        ['gymnastics', 'cyan'],
-                        ['yoga', 'brown'],
-                        ['hockey', 'white'],
-                        ['bootcamp', 'pink']
+                        ['soccer', colorSoccer],
+                        ['fitness', colorFitness],
+                        ['running', colorRunning],
+                        ['swimming', colorSwimming],
+                        ['fightingsport', colorFighting],
+                        ['cycling', colorCycling],
+                        ['gymnastics', colorGymnastics],
+                        ['yoga', colorYoga],
+                        ['hockey', colorHockey],
+                        ['bootcamp', colorBootcamp],
+                        ['dancing', colorDancing]
                     ]
                 }
             }
@@ -70,31 +97,32 @@ function filterData() {
             "type": "geojson",
             "data": geojsonPoly
         });
-            map.addLayer({
-                "id": "polygon",
-                "type": "fill",
-                "source": "polygon",
-                'layout': {},
-                'paint': {
-                    'fill-color': {
-                        property: 'sport-category',
-                        type: 'categorical',
-                        stops: [
-                            ['soccer', 'red'],
-                            ['fitness', 'green'],
-                            ['running', 'blue'],
-                            ['swimming', 'purple'],
-                            ['fightingsport', 'yellow'],
-                            ['cycling', 'orange'],
-                            ['gymnastics', 'cyan'],
-                            ['yoga', 'brown'],
-                            ['hockey', 'white'],
-                            ['bootcamp', 'pink']
-                        ]
-                    },
-                    'fill-opacity': 0.8
-                }
-            });
+        map.addLayer({
+            "id": "polygon",
+            "type": "fill",
+            "source": "polygon",
+            'layout': {},
+            'paint': {
+                'fill-color': {
+                    property: 'category',
+                    type: 'categorical',
+                    stops: [
+                        ['soccer', colorSoccer],
+                        ['fitness', colorFitness],
+                        ['running', colorRunning],
+                        ['swimming', colorSwimming],
+                        ['fightingsport', colorFighting],
+                        ['cycling', colorCycling],
+                        ['gymnastics', colorGymnastics],
+                        ['yoga', colorYoga],
+                        ['hockey', colorHockey],
+                        ['bootcamp', colorBootcamp],
+                        ['dancing', colorDancing]
+                    ]
+                },
+                'fill-opacity': 0.5
+            }
+        });
     }
 }
 
@@ -133,21 +161,24 @@ function filter() {
                 property: 'sport-category',
                 type: 'categorical',
                 stops: [
-                    ['soccer', 'red'],
-                    ['fitness', 'green'],
-                    ['running', 'blue'],
-                    ['swimming', 'purple'],
-                    ['fightingsport', 'yellow'],
-                    ['cycling', 'orange'],
-                    ['gymnastics', 'cyan'],
-                    ['yoga', 'brown'],
-                    ['hockey', 'white'],
-                    ['bootcamp', 'pink']
+                    ['soccer', colorSoccer],
+                    ['fitness', colorFitness],
+                    ['running', colorRunning],
+                    ['swimming', colorSwimming],
+                    ['fightingsport', colorFighting],
+                    ['cycling', colorCycling],
+                    ['gymnastics', colorGymnastics],
+                    ['yoga', colorYoga],
+                    ['hockey', colorHockey],
+                    ['bootcamp', colorBootcamp],
+                    ['dancing', colorDancing]
                 ]
             }
         }
     });
 }
+
+
 
 function filterOnDay(number) {
     if (number == 0) {
@@ -228,18 +259,169 @@ function setDefaultLayer() {
                 property: 'sport-category',
                 type: 'categorical',
                 stops: [
-                    ['soccer', 'red'],
-                    ['fitness', 'green'],
-                    ['running', 'blue'],
-                    ['swimming', 'purple'],
-                    ['fightingsport', 'yellow'],
-                    ['cycling', 'orange'],
-                    ['gymnastics', 'cyan'],
-                    ['yoga', 'brown'],
-                    ['hockey', 'white'],
-                    ['bootcamp', 'pink']
+                    ['soccer', colorSoccer],
+                    ['fitness', colorFitness],
+                    ['running', colorRunning],
+                    ['swimming', colorSwimming],
+                    ['fightingsport', colorFighting],
+                    ['cycling', colorCycling],
+                    ['gymnastics', colorGymnastics],
+                    ['yoga', colorYoga],
+                    ['hockey', colorHockey],
+                    ['bootcamp', colorBootcamp],
+                    ['dancing', colorDancing]
                 ]
             }
         }
     });
 }
+
+function getPolygons() {
+    loadshp({
+        url: 'http://localhost:8080/voronoi', // path or your upload file
+        encoding: 'big5', // default utf-8
+        EPSG: 3826 // default 4326
+    }, function (geojson) {
+
+        var requestPolygons = $.ajax({
+            url: "http://localhost:8080/getpolygons",
+            method: "GET",
+            dataType: "json"
+        });
+        requestPolygons.done(function (msg) {
+            geojsonPoly = geojson;
+            for (var cluster of msg.clusters) {
+                for (var id of cluster.ids) {
+                    for (var f of geojsonPoly.features) {
+                        if (f.properties.field_1 == id) {
+                            f.properties.category = cluster.category;
+                        }
+                    }
+                }
+            }
+
+            map.addSource('polygon', {
+                "type": "geojson",
+                "data": geojsonPoly
+            });
+
+            map.addLayer({
+                "id": "polygon",
+                "type": "fill",
+                "source": "polygon",
+                'layout': {},
+                'paint': {
+                    'fill-color': {
+                        property: 'category',
+                        type: 'categorical',
+                        stops: [
+                            ['soccer', colorSoccer],
+                            ['fitness', colorFitness],
+                            ['running', colorRunning],
+                            ['swimming', colorSwimming],
+                            ['fightingsport', colorFighting],
+                            ['cycling', colorCycling],
+                            ['gymnastics', colorGymnastics],
+                            ['yoga', colorYoga],
+                            ['hockey', colorHockey],
+                            ['bootcamp', colorBootcamp],
+                            ['dancing', colorDancing]
+                        ]
+                    },
+                    'fill-opacity': 0.5
+                }
+            });
+
+        });
+        requestPolygons.fail(function (jqXHR, textStatus) {
+            alert(textStatus);
+        });
+    });
+}
+
+function getStravaPolygons() {
+
+     loadshp({
+            url: 'http://localhost:8080/voronoistrava', // path or your upload file
+            encoding: 'big5', // default utf-8
+            EPSG: 3826 // default 4326
+        }, function (geojson) {
+
+            var requestPolygons = $.ajax({
+                url: "http://localhost:8080/getpolygonsstrava",
+                method: "GET",
+                dataType: "json"
+            });
+            requestPolygons.done(function (msg) {
+                console.log(msg);
+                for(var cluster of msg.clusters) {
+                    for(var id of cluster.ids) {
+                        for(var f of geojson.features) {
+                            if(f.properties.field_1 == id) {
+                                f.properties.category = cluster.category;
+                                // TODO: SET CATEGORY VAN CLUSTER, DEZE STAAT NU NIET IN DB
+                            }
+                        }
+                    }
+                }
+
+                // map.removeSource("point");
+                // map.removeLayer("point");
+                map.removeSource("polygon");
+                map.removeLayer("polygon");
+                map.addSource('polygon', {
+                    "type": "geojson",
+                    "data": geojson
+                });
+                map.addLayer({
+                    "id": "polygon",
+                    "type": "fill",
+                    "source": "polygon",
+                    'layout': {},
+                    'paint': {
+                        'fill-color': {
+                            property: 'category',
+                            type: 'categorical',
+                            stops: [
+                                ['soccer', colorSoccer],
+                                ['fitness', colorFitness],
+                                ['running', colorRunning],
+                                ['swimming', colorSwimming],
+                                ['fightingsport', colorFighting],
+                                ['cycling', colorCycling],
+                                ['gymnastics', colorGymnastics],
+                                ['yoga', colorYoga],
+                                ['hockey', colorHockey],
+                                ['bootcamp', colorBootcamp], 
+                                ['dancing', colorDancing]
+                            ]
+                        },
+                        'fill-opacity': 0.5
+                    }
+                });
+
+            });
+            requestPolygons.fail(function (jqXHR, textStatus) {
+                alert(textStatus);
+            });
+        });
+}
+
+function getPoints() {
+    var requestPolygons = $.ajax({
+        url: "http://localhost:8080/getpoints",
+        method: "GET",
+        dataType: "json"
+    });
+    requestPolygons.done(function (msg) {
+        geojson = msg;
+    });
+    requestPolygons.fail(function (jqXHR, textStatus) {
+        alert(textStatus);
+    });
+}
+$(document).ready(function () {
+    getPolygons();
+    getPoints();
+    getStravaPolygons();
+});

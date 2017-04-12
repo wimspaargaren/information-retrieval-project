@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
+	"github.com/skratchdot/open-golang/open"
 	"github.com/unrolled/render"
 )
 
@@ -33,9 +35,24 @@ func main() {
 	// Routes
 	mux.HandleFunc("/getpoints", GetPoints).Methods("GET")
 	mux.HandleFunc("/getpolygons", GetPolygons).Methods("GET")
+	mux.HandleFunc("/getpolygonsstrava", GetPolygonsStrava).Methods("GET")
+	mux.HandleFunc("/getstravapoints", GetStravaPoints).Methods("GET")
+
+	mux.HandleFunc("/voronoi", getFile).Methods("GET")
+	mux.HandleFunc("/voronoistrava", getFileStrava).Methods("GET")
+	open.Start("index.html")
+
 	n := negroni.Classic()
 	n.Use(c)
 	n.UseHandler(mux)
 	n.Run(":8080")
 	// log.Fatal(http.ListenAndServe(":8080", router))
+}
+
+func getFile(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "shapefile.zip")
+}
+
+func getFileStrava(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "strava.zip")
 }

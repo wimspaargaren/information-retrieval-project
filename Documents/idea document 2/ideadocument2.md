@@ -13,7 +13,7 @@ Social data is gathered in large quantities and available on the internet via me
 Since data from the mentioned sources can contain geographic references, characteristics can possibly be identified and defined for certain areas. Another challenge here is spatial analysis and clustering of the collected data.
 
 ## Objective
-The goal of Amsterdam in motion is to identify and characterise neighborhoods in Amsterdam based on sport activities, which requires the previously mentioned data collecting, categorisation, and spatial clustering. The identified neighbourhoods can then be visualised on a map to get an overview of where different sport activities are popular, on what days of the week and on what time of day. This can be useful for event organisers, shopkeepers, or people that want to know where to find companions in there sport activities.
+	
 
 ## Data Collection
 To achieve this objective, data must be collected for the application. This data will be collected from two sources, which are social media platforms.
