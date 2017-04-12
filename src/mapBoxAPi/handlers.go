@@ -16,7 +16,7 @@ func GetPoints(w http.ResponseWriter, r *http.Request) {
 	var err error
 	db, err = sql.Open("postgres", constring)
 	if err != nil {
-		fmt.Printf("error: %v\n", err)
+		fmt.Printf("errorrr: %v\n", err)
 	}
 	rows, errQ := db.Query("SELECT lat,long,category, day, daypart FROM data Where category IS NOT NULL")
 	if errQ != nil {
@@ -96,44 +96,49 @@ func GetPolygons(w http.ResponseWriter, r *http.Request) {
 			result.Clusters[last] = c
 		}
 		idTemp = id
+	}
+	render := render.New()
+	render.JSON(w, http.StatusOK, result)
+}
 
-		// if idTemp != id {
-		// 	if test != "" {
-		// 		//Polygon feature
-		// 		var resp PolygonFeature
-		// 		resp.Type = "Feature"
-		// 		resp.Geometry.Type = "Polygon"
-		// 		resp.Properties.Category = category
-		// 		resp.Properties.ID = id
-		// 		rows2, errQ := db.Query("SELECT lat, long FROM data WHERE " + test)
-		// 		tempSlice := [][2]float64{}
-		// 		if errQ != nil {
-		// 			fmt.Printf("error: %v\n", err)
-		// 		}
-		// 		for rows2.Next() {
-		// 			var long float64
-		// 			var lat float64
-		// 			err = rows2.Scan(&lat, &long)
-		// 			var test2 [2]float64
-		// 			test2[0] = long
-		// 			test2[1] = lat
-		// 			tempSlice = append(tempSlice, test2)
+//GetPolygonsStrava retrieves all polygons.
+func GetPolygonsStrava(w http.ResponseWriter, r *http.Request) {
+	var err error
+	fmt.Println("CONSTRING: ", constring)
+	db, err = sql.Open("postgres", constring)
+	if err != nil {
+		fmt.Printf("connection error: %v\n", err)
+	}
+	rows, errQ := db.Query("SELECT id, unnest(data_ids), category FROM clusters WHERE cluster_set_id = 16")
+	if errQ != nil {
+		fmt.Printf("error strava: %v\n", err)
+	}
 
-		// 		}
-		// 		resp.Geometry.Coordinates = append(resp.Geometry.Coordinates, tempSlice)
-		// 		result.Features = append(result.Features, resp)
+	var result polyFullResponse
+	idTemp := -1
+	// var intArray []int
+	// var test string
+	for rows.Next() {
+		var id int
+		var tweetID int
+		var category string
+		err = rows.Scan(&id, &tweetID, &category)
+		if err != nil {
+			fmt.Println("this did not work", err)
+		}
 
-		// 	}
-
-		// 	idTemp = id
-		// 	intArray = []int{}
-		// 	test = "id = " + strconv.Itoa(tweetID)
-		// 	intArray = append(intArray, tweetID)
-		// } else {
-		// 	test += " OR id = " + strconv.Itoa(tweetID)
-
-		// 	intArray = append(intArray, tweetID)
-		// }
+		if id != idTemp {
+			var c Cluster
+			c.IDs = append(c.IDs, tweetID)
+			c.Category = category
+			result.Clusters = append(result.Clusters, c)
+		} else {
+			last := len(result.Clusters) - 1
+			c := result.Clusters[last]
+			c.IDs = append(c.IDs, tweetID)
+			result.Clusters[last] = c
+		}
+		idTemp = id
 	}
 	render := render.New()
 	render.JSON(w, http.StatusOK, result)
