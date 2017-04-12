@@ -7,7 +7,7 @@ $(document).ready(function () {
     // to hide the different options based on the selection neighbourhoods/points
     $('#dataRepresentationSelect').on('change', function(event) {
         // points
-        if (event.target.value == 1) {
+        if (event.target.value == 2 || event.target.value == 3) {
             $("#dayfilter-div")[0].style.display = "block";
             $("#daypartfilter-div")[0].style.display = "block";
             $("#slider-div")[0].style.display = "none";
@@ -57,7 +57,7 @@ $(document).ready(function () {
         }
 
         slider.addEventListener('input', function(e) {
-            map.setPaintProperty('polygon', 'fill-opacity', parseInt(e.target.value, 10) / 100);
+            map.setPaintProperty('datalayer', 'fill-opacity', parseInt(e.target.value, 10) / 100);
             sliderValue.textContent = e.target.value + '%';
         });
     });
