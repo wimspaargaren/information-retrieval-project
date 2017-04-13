@@ -62,6 +62,16 @@ body {
     margin-right: 5%;
 }
 
+.shown-label{
+    float: left;
+    margin-top:15px;
+
+}
+
+#current-show-label{
+    font-weight: 600;
+}
+
 .slidercontainer{
     float: right;
     width: 200px;
@@ -74,10 +84,10 @@ body {
 }
 
 #slider{
-    margin-top:10px;
+    margin-top:15px;
 }
 
 #slider-label{
-    margin-top:10px;
+    margin-top:15px;
     font-weight: 400;
 }

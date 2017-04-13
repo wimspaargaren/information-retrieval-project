@@ -65,7 +65,15 @@ $(document).ready(function () {
     })
 
     $('#dataRepresentationSelect').on('change', function (event) {
-
+        if ($("#dataRepresentationSelect")[0].value === "0") {
+            $("#current-show-label")[0].innerHTML = "Regions based on Twitter data";
+        } else if ($("#dataRepresentationSelect")[0].value === "1") {
+            $("#current-show-label")[0].innerHTML = "Regions based on Strava data";
+        } else if ($("#dataRepresentationSelect")[0].value === "2") {
+            $("#current-show-label")[0].innerHTML = "Tweet location points with category";
+        } else {
+            $("#current-show-label")[0].innerHTML = "Strava location points with category";
+        }
         dataFilterVal = event.target.value;
         filterData();
     })
@@ -116,7 +124,7 @@ function filterData() {
         });
         dayFilterVal = $('#dayfilter')[0].value;
         dayPartFilterVal = $('#daypartfilter')[0].value;
-        
+
         filter(twitterPointsGeoJson);
     } else if (dataFilterVal == "3") {
         map.addSource('datalayer', {
