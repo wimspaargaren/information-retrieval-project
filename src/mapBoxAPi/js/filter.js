@@ -11,17 +11,27 @@
 // var colorHockey = "#D53140"
 // var colorDancing = "#FBDC65"
 
-var colorBootcamp = "#EF6C78";
+//
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+
 var colorSoccer = "#FFFFEE"
-var colorFitness = "#DADDF2"
-var colorRunning = "#AABBDD"
-var colorSwimming = "#8888AA"
-var colorFighting = "#3F487F"
-var colorCycling = "#223399"
-var colorGymnastics = "#56141A"
-var colorYoga = "#95222D"
+var colorFitness = "#AABBDD"
+var colorRunning = "#223399"
+var colorSwimming = "#085F12"
+var colorFighting = "#51DD61"
+var colorCycling = "#FBDC65"
+var colorGymnastics = "#886B00"
+var colorYoga = "#EF6C78"
 var colorHockey = "#D53140"
-var colorDancing = "#FBDC65"
+var colorBootcamp = "#95007F";
+var colorDancing = "#56141A"
 
 var dayFilterVal = "0";
 var dayPartFilterVal = "0";
@@ -37,19 +47,25 @@ $(document).ready(function () {
     $('#dayfilter').on('change', function (event) {
         if ($("#dataRepresentationSelect")[0].value === "2") {
             dayFilterVal = event.target.value;
-            filter();
+            filter(twitterPointsGeoJson);
+        } else if ($("#dataRepresentationSelect")[0].value === "3") {
+            dayFilterVal = event.target.value;
+            filter(stravaPointsGeoJson);
         }
     })
 
     $('#daypartfilter').on('change', function (event) {
         if ($("#dataRepresentationSelect")[0].value === "2") {
             dayPartFilterVal = event.target.value;
-            filter();
+            filter(twitterPointsGeoJson);
+        } else if ($("#dataRepresentationSelect")[0].value === "3") {
+            dayPartFilterVal = event.target.value;
+            filter(stravaPointsGeoJson);
         }
     })
 
     $('#dataRepresentationSelect').on('change', function (event) {
-        
+
         dataFilterVal = event.target.value;
         filterData();
     })
@@ -98,8 +114,12 @@ function filterData() {
                 }
             }
         });
+        dayFilterVal = $('#dayfilter')[0].value;
+        dayPartFilterVal = $('#daypartfilter')[0].value;
+        
+        filter(twitterPointsGeoJson);
     } else if (dataFilterVal == "3") {
-          map.addSource('datalayer', {
+        map.addSource('datalayer', {
             "type": "geojson",
             "data": stravaPointsGeoJson
         });
@@ -133,6 +153,9 @@ function filterData() {
                 }
             }
         });
+        dayFilterVal = $('#dayfilter')[0].value;
+        dayPartFilterVal = $('#daypartfilter')[0].value;
+        filter(stravaPointsGeoJson);
     } else if (dataFilterVal == "1") {
         map.addSource('datalayer', {
             "type": "geojson",
@@ -201,14 +224,14 @@ function filterData() {
     }
 }
 
-function filter() {
+function filter(currentGeo) {
     if (dayFilterVal == "0" && dayPartFilterVal == "0") {
-        setDefaultLayer();
+        setDefaultLayer(currentGeo);
         return;
     }
-    var resJson = twitterPointsGeoJson;
+    var resJson = currentGeo;
     if (dayFilterVal != "0") {
-        resJson = filterOnDay(parseInt(dayFilterVal));
+        resJson = filterOnDay(parseInt(dayFilterVal), currentGeo);
     }
     if (dayPartFilterVal != "0") {
         resJson = filterOnDayPart(resJson, parseInt(dayPartFilterVal));
@@ -254,17 +277,17 @@ function filter() {
 
 
 
-function filterOnDay(number) {
+function filterOnDay(number, currentGeo) {
     if (number == 0) {
-        setDefaultLayer();
-        return twitterPointsGeoJson;
+        setDefaultLayer(currentGeo);
+        return currentGeo;
     }
     var day = getDayFromNumber(number);
 
     var resJson = { features: [], type: "FeatureCollection" };
-    for (var i = 0; i < twitterPointsGeoJson.features.length; i++) {
-        if (twitterPointsGeoJson.features[i].properties.day == day) {
-            resJson.features.push(twitterPointsGeoJson.features[i]);
+    for (var i = 0; i < currentGeo.features.length; i++) {
+        if (currentGeo.features[i].properties.day == day) {
+            resJson.features.push(currentGeo.features[i]);
         }
     }
     return resJson;
@@ -285,8 +308,8 @@ function getDayFromNumber(number) {
 
 function filterOnDayPart(res, number) {
     if (number == 0) {
-        setDefaultLayer();
-        return twitterPointsGeoJson;
+        setDefaultLayer(res);
+        return res;
     }
     var daypart = getDayPartFromNumber(number);
 
@@ -310,12 +333,12 @@ function getDayPartFromNumber(number) {
 }
 
 
-function setDefaultLayer() {
+function setDefaultLayer(currentGeo) {
     map.removeSource("datalayer")
     map.removeLayer("datalayer");
     map.addSource('datalayer', {
         "type": "geojson",
-        "data": twitterPointsGeoJson
+        "data": currentGeo
     });
 
     map.addLayer({
